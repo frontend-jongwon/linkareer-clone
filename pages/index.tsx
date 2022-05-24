@@ -1,8 +1,9 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import Header from "../src/Header/Header";
-import { makeStyles } from "@material-ui/core";
+import { makeStyles, Container } from "@material-ui/core";
 import Menu from "../src/Menu/Menu";
+import ActivityPost from "../src/ActivityPost/ActivityPost";
 
 const activity = () => {
   const classes = useStyles();
@@ -10,6 +11,9 @@ const activity = () => {
     <Box className={classes.root}>
       <Header />
       <Menu />
+      <Container className={classes.wrapper} fixed>
+        <ActivityPost />
+      </Container>
     </Box>
   );
 };
@@ -22,5 +26,9 @@ const useStyles = makeStyles(() => ({
     display: "flex",
     justifyContent: "center",
     flexDirection: "column",
+  },
+
+  wrapper: {
+    border: "1px solid",
   },
 }));

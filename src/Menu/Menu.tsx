@@ -43,6 +43,7 @@ const useStyles = makeStyles(() => ({
     paddingLeft: "28.6%",
     display: "flex",
     justifyContent: "center",
+    marginBottom: 90,
   },
 
   tab: {
