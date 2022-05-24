@@ -20,6 +20,7 @@ const useStyles = makeStyles(() => ({
   root: {
     width: "100vw",
     display: "flex",
+    justifyContent: "center",
     flexDirection: "column",
   },
 }));

@@ -21,9 +21,9 @@ const HeaderTab = () => {
         <ListItem button className={classes.Item}>
           <EventAvailable className={classes.Icon} />
           <ListItemText
-            primary="공고달력"
+            primary="공고 달력"
             primaryTypographyProps={{
-              style: { fontSize: 12, width: 45, marginRight: 35 },
+              style: { fontSize: 12, width: 46, marginRight: 35 },
             }}
           />
         </ListItem>
