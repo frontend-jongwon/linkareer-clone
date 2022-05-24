@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import logo from "../../images/logo.png";
+import second from "@material-ui/core";
 
 const HeaderLogo = () => {
   return <Image src={logo} width={145} height={34} />;

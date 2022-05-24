@@ -69,7 +69,7 @@ export default HeaderTab;
 
 const useStyles = makeStyles(() => ({
   root: {
-    width: 236,
+    width: 206,
     height: 17,
     display: "flex",
     alignItems: "center",
@@ -83,13 +83,13 @@ const useStyles = makeStyles(() => ({
     lineHeight: 2.33,
     letterSpacing: -0.48,
     padding: 0,
-    // "&:last-child::after": {
-    //   content: '""',
-    //   width: 1,
-    //   height: 12,
-    //   backgroundColor: "#dddddd",
-    //   marginRight: 30,
-    // },
+    "&:last-child::after": {
+      content: '""',
+      width: 1,
+      height: 12,
+      backgroundColor: "#dddddd",
+      marginRight: 30,
+    },
   },
 
   Icon: {
@@ -103,5 +103,6 @@ const useStyles = makeStyles(() => ({
     // border: "1px solid",
     display: "flex",
     justifyContent: "space-between",
+    marginLeft: "30px",
   },
 }));
