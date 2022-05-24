@@ -13,7 +13,7 @@ import { VisibilityOutlined, ChatBubbleOutline } from "@material-ui/icons";
 const ActivityPostTitle = () => {
   const classes = useStyles();
   return (
-    <Container>
+    <Container className={classes.root}>
       <Box className={classes.textBox}>모집시 마감(D-82)</Box>
       <Box className={classes.rowText}>
         <Typography variant="h5" className={classes.title}>
@@ -47,6 +47,10 @@ const ActivityPostTitle = () => {
 export default ActivityPostTitle;
 
 const useStyles = makeStyles(() => ({
+  root: {
+    padding: 0,
+  },
+
   textBox: {
     backgroundColor: "#4a5f6e",
     color: "#ffffff",

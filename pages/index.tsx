@@ -29,6 +29,7 @@ const useStyles = makeStyles(() => ({
   },
 
   wrapper: {
+    padding: 0,
     border: "1px solid",
   },
 }));
