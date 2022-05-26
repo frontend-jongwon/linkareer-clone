@@ -11,6 +11,7 @@ import {
 } from "@material-ui/core";
 import Link from "next/link";
 import ActivityPostButton from "./ActivityPostButton";
+import { Launch } from "@material-ui/icons";
 
 const ActivityPostContent = () => {
   const myLoader = () => {
@@ -178,10 +179,13 @@ const ActivityPostContent = () => {
               </ListItemText>
               <ListItemText
                 primaryTypographyProps={{
-                  style: { fontSize: 15, fontWeight: 400 },
+                  style: { fontSize: 15, fontWeight: 400, color: "#01A0ff" },
                 }}
               >
-                <Link href="">https://www.tridge.com</Link>
+                <Box className={classes.LinkIconWrapper}>
+                  <Link href="">https://www.tridge.com/</Link>
+                  <Launch className={classes.icon} />
+                </Box>
               </ListItemText>
             </ListItem>
           </List>
@@ -200,6 +204,7 @@ const useStyles = makeStyles(() => ({
     marginTop: 10,
     marginLeft: 15,
     width: "fit-content",
+    marginBottom: 70,
   },
 
   row: {
@@ -232,4 +237,15 @@ const useStyles = makeStyles(() => ({
     // marginBottom: 2,
   },
   //   key: {},
+  icon: {
+    width: 18,
+    height: 18,
+    color: "#01A0ff",
+    // marginBottom: 10,
+  },
+
+  LinkIconWrapper: {
+    display: "flex",
+    alignItems: "center",
+  },
 }));

@@ -11,9 +11,9 @@ const activity = () => {
     <Box className={classes.root}>
       <Header />
       <Menu />
-      <Container className={classes.wrapper} fixed>
+      <Box className={classes.wrapper}>
         <ActivityPost />
-      </Container>
+      </Box>
     </Box>
   );
 };
@@ -26,10 +26,15 @@ const useStyles = makeStyles(() => ({
     display: "flex",
     justifyContent: "center",
     flexDirection: "column",
+    backgroundColor: "#ffffff",
   },
 
   wrapper: {
     padding: 0,
     border: "1px solid",
+    // width: "fit-content",
+    display: "flex",
+    justifyContent: "center",
+    paddingRight: 410,
   },
 }));
