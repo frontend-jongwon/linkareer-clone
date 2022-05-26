@@ -1,7 +1,7 @@
 import React from "react";
-import ActivityPostTitle from "./ActivityPostTitle";
-import ActivityPostContent from "./ActivityPostContent";
-import ActivityPostTab from "./ActivityPostTab";
+import ActivityPostTitle from "./components/ActivityPostTitle";
+import ActivityPostContent from "./components/ActivityPostContent";
+import ActivityPostTab from "./components/ActivityPostTab";
 import { makeStyles, Container } from "@material-ui/core";
 
 const ActivityPost = () => {

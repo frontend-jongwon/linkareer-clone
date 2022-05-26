@@ -4,6 +4,7 @@ import Header from "../src/Header/Header";
 import { makeStyles, Container } from "@material-ui/core";
 import Menu from "../src/Menu/Menu";
 import ActivityPost from "../src/ActivityPost/ActivityPost";
+import BestPost from "../src/BestPost/BestPost";
 
 const activity = () => {
   const classes = useStyles();
@@ -13,6 +14,7 @@ const activity = () => {
       <Menu />
       <Box className={classes.wrapper}>
         <ActivityPost />
+        <BestPost />
       </Box>
     </Box>
   );
