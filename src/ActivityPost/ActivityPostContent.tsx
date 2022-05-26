@@ -10,6 +10,7 @@ import {
   makeStyles,
 } from "@material-ui/core";
 import Link from "next/link";
+import ActivityPostButton from "./ActivityPostButton";
 
 const ActivityPostContent = () => {
   const myLoader = () => {
@@ -39,7 +40,7 @@ const ActivityPostContent = () => {
                 primaryTypographyProps={{
                   style: {
                     fontSize: 15,
-                    fontWeight: 600,
+                    fontWeight: 800,
                     color: "#4990e2",
                     marginRight: 30,
                   },
@@ -60,7 +61,7 @@ const ActivityPostContent = () => {
                 primaryTypographyProps={{
                   style: {
                     fontSize: 15,
-                    fontWeight: 600,
+                    fontWeight: 800,
                     color: "#4990e2",
                     marginRight: 30,
                   },
@@ -81,7 +82,7 @@ const ActivityPostContent = () => {
                 primaryTypographyProps={{
                   style: {
                     fontSize: 15,
-                    fontWeight: 600,
+                    fontWeight: 800,
                     color: "#4990e2",
                     marginRight: 30,
                   },
@@ -102,7 +103,7 @@ const ActivityPostContent = () => {
                 primaryTypographyProps={{
                   style: {
                     fontSize: 15,
-                    fontWeight: 600,
+                    fontWeight: 800,
                     color: "#4990e2",
                     marginRight: 30,
                   },
@@ -125,7 +126,7 @@ const ActivityPostContent = () => {
                 primaryTypographyProps={{
                   style: {
                     fontSize: 15,
-                    fontWeight: 600,
+                    fontWeight: 800,
                     color: "#4990e2",
                     marginRight: 30,
                   },
@@ -146,7 +147,7 @@ const ActivityPostContent = () => {
                 primaryTypographyProps={{
                   style: {
                     fontSize: 15,
-                    fontWeight: 600,
+                    fontWeight: 800,
                     color: "#4990e2",
                     marginRight: 30,
                   },
@@ -167,7 +168,7 @@ const ActivityPostContent = () => {
                 primaryTypographyProps={{
                   style: {
                     fontSize: 15,
-                    fontWeight: 600,
+                    fontWeight: 800,
                     color: "#4990e2",
                     marginRight: 30,
                   },
@@ -185,6 +186,7 @@ const ActivityPostContent = () => {
             </ListItem>
           </List>
         </Box>
+        <ActivityPostButton />
       </Box>
     </Container>
   );
@@ -202,11 +204,13 @@ const useStyles = makeStyles(() => ({
 
   row: {
     display: "flex",
+    marginBottom: 75,
   },
 
   image: {
     border: "1px solid #dddddd",
-    width: "fit-content",
+    width: 245,
+    height: 245,
   },
 
   title: {
@@ -214,6 +218,7 @@ const useStyles = makeStyles(() => ({
     fontWeight: 600,
     fontSize: 18,
     marginLeft: 50,
+    marginBottom: 6,
   },
 
   content: {
@@ -224,6 +229,7 @@ const useStyles = makeStyles(() => ({
   item: {
     width: "fit-content",
     padding: 0,
+    // marginBottom: 2,
   },
   //   key: {},
 }));

@@ -1,6 +1,6 @@
 import React from "react";
-import ActivityPostTitle from "../ActivityPost/ActivityPostTitle";
-import ActivityPostContent from "../ActivityPost/ActivityPostContent";
+import ActivityPostTitle from "./ActivityPostTitle";
+import ActivityPostContent from "./ActivityPostContent";
 
 const ActivityPost = () => {
   return (
