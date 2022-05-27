@@ -30,6 +30,7 @@ const BestPostLIst: FC<BestPostLIstProps> = ({ post }) => {
               width: "fit-content",
             },
           }}
+          className={classes.text}
         >
           {post.id} {post.desc}
         </ListItemText>
@@ -46,6 +47,14 @@ const useStyles = makeStyles(() => ({
     marginTop: 2,
     marginLeft: 10,
     padding: 0,
+  },
+
+  text: {
+    "&::first-letter": {
+      color: "#01a0ff",
+      fontWeight: 800,
+      fontSize: 13,
+    },
   },
 
   item: {
