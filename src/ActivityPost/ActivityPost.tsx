@@ -4,7 +4,7 @@ import {
   ActivityPostTitle,
   ActivityPostContent,
   ActivityPostTab,
-} from "./components/index";
+} from "./components";
 
 const ActivityPost = () => {
   const classes = useStyles();

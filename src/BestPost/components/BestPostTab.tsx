@@ -1,6 +1,6 @@
 import React, { useState, FC } from "react";
 import { Tab, Tabs, makeStyles } from "@material-ui/core";
-import TabPanel from "../../TabPanel";
+import TabPanel from "../../UtilComponents/TabPanel";
 import BestPostList from "./BestPostList";
 
 export type mockType = {

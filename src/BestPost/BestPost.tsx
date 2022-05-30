@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Box, makeStyles } from "@material-ui/core";
-import { BestPostTitle, BestPostTab } from "./components/index";
+import { BestPostTitle, BestPostTab } from "./components";
 
 const mockData = {
   realTime: [

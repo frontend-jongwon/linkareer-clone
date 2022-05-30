@@ -1,6 +1,6 @@
 import React from "react";
 import { makeStyles, Box } from "@material-ui/core";
-import { HeaderLogo, HeaderSearch, HeaderTab } from "./components/index";
+import { HeaderLogo, HeaderSearch, HeaderTab } from "./components";
 
 const Header = () => {
   const classes = useStyles();
