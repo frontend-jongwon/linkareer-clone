@@ -20,5 +20,6 @@ const useStyles = makeStyles(() => ({
     display: "flex",
     padding: 22,
     flexDirection: "column",
+    marginBottom: 140,
   },
 }));

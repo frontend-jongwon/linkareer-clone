@@ -6,6 +6,7 @@ import Menu from "../src/Menu/Menu";
 import ActivityPost from "../src/ActivityPost/ActivityPost";
 import BestPost from "../src/BestPost/BestPost";
 import MostViewPost from "../src/MostViewPost/MostViewPost";
+import Footer from "../src/Footer/Footer";
 
 const activity = () => {
   const classes = useStyles();
@@ -20,6 +21,7 @@ const activity = () => {
         </Box>
         <BestPost />
       </Box>
+      <Footer />
     </Box>
   );
 };
