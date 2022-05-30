@@ -41,6 +41,5 @@ const useStyles = makeStyles(() => ({
     // width: "fit-content",
     display: "flex",
     justifyContent: "center",
-    paddingRight: 410,
   },
 }));

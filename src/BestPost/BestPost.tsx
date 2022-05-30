@@ -83,6 +83,7 @@ const useStyles = makeStyles(() => ({
     width: 300,
     height: 390,
     padding: 2,
+    marginLeft: 60,
     border: "1px solid #dddddd",
   },
 }));
