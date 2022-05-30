@@ -7,7 +7,7 @@ import {
   Box,
   makeStyles,
 } from "@material-ui/core";
-import TabPanel from "../../UtilComponents/TabPanel";
+import TabPanel from "../../Utils/TabPanel";
 
 const ActivityPostTab = () => {
   const classes = useStyles();

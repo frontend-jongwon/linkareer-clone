@@ -1,10 +1,11 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import Header from "../src/Header/Header";
-import { makeStyles, Container } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 import Menu from "../src/Menu/Menu";
 import ActivityPost from "../src/ActivityPost/ActivityPost";
 import BestPost from "../src/BestPost/BestPost";
+import MostViewPost from "../src/MostViewPost/MostViewPost";
 
 const activity = () => {
   const classes = useStyles();
@@ -13,7 +14,10 @@ const activity = () => {
       <Header />
       <Menu />
       <Box className={classes.wrapper}>
-        <ActivityPost />
+        <Box>
+          <ActivityPost />
+          <MostViewPost />
+        </Box>
         <BestPost />
       </Box>
     </Box>
