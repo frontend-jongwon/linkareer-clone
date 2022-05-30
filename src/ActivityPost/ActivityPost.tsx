@@ -1,8 +1,10 @@
 import React from "react";
-import ActivityPostTitle from "./components/ActivityPostTitle";
-import ActivityPostContent from "./components/ActivityPostContent";
-import ActivityPostTab from "./components/ActivityPostTab";
 import { makeStyles, Container } from "@material-ui/core";
+import {
+  ActivityPostTitle,
+  ActivityPostContent,
+  ActivityPostTab,
+} from "./components/index";
 
 const ActivityPost = () => {
   const classes = useStyles();

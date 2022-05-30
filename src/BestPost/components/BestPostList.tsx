@@ -20,7 +20,7 @@ interface BestPostLIstProps {
 const BestPostLIst: FC<BestPostLIstProps> = ({ post }) => {
   const classes = useStyles();
   return (
-    <List className={classes.root}>
+    <List className={classes.root} key={post.id}>
       <ListItem className={classes.item}>
         <ListItemText
           primaryTypographyProps={{
