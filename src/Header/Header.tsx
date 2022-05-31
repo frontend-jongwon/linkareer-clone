@@ -1,16 +1,16 @@
-import React from "react";
-import { makeStyles, Box } from "@material-ui/core";
+import React, { FC } from "react";
+import { makeStyles } from "@material-ui/core";
 import { HeaderLogo, HeaderSearch, HeaderTab } from "./components";
 
-const Header = () => {
+const Header: FC = () => {
   const classes = useStyles();
 
   return (
-    <Box className={classes.root}>
+    <div className={classes.root}>
       <HeaderLogo />
       <HeaderSearch />
       <HeaderTab />
-    </Box>
+    </div>
   );
 };
 
@@ -18,11 +18,9 @@ export default Header;
 
 const useStyles = makeStyles(() => ({
   root: {
-    width: "100%",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    // border: "1px solid",
     padding: "30px 410px",
   },
 }));

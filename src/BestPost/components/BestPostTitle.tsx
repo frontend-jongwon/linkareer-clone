@@ -1,11 +1,11 @@
-import React from "react";
+import React, { FC } from "react";
 import { Typography, Box, makeStyles } from "@material-ui/core";
 import { ArrowForwardIos } from "@material-ui/icons";
 
-const BestPostTitle = () => {
+const BestPostTitle: FC = () => {
   const classes = useStyles();
   return (
-    <Box className={classes.root}>
+    <div className={classes.root}>
       <Typography variant="h6" className={classes.title}>
         커뮤니티 BEST 이야기
       </Typography>
@@ -15,7 +15,7 @@ const BestPostTitle = () => {
         </Typography>
         <ArrowForwardIos className={classes.icon} />
       </Box>
-    </Box>
+    </div>
   );
 };
 

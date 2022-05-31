@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import Box from "@mui/material/Box";
 import Header from "../src/Header/Header";
 import { makeStyles } from "@material-ui/core";
@@ -8,10 +8,10 @@ import BestPost from "../src/BestPost/BestPost";
 import MostViewPost from "../src/MostViewPost/MostViewPost";
 import Footer from "../src/Footer/Footer";
 
-const activity = () => {
+const Activity: FC = () => {
   const classes = useStyles();
   return (
-    <Box className={classes.root}>
+    <div className={classes.root}>
       <Header />
       <Menu />
       <Box className={classes.wrapper}>
@@ -22,11 +22,11 @@ const activity = () => {
         <BestPost />
       </Box>
       <Footer />
-    </Box>
+    </div>
   );
 };
 
-export default activity;
+export default Activity;
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -39,7 +39,7 @@ const useStyles = makeStyles(() => ({
 
   wrapper: {
     padding: 0,
-    border: "1px solid",
+    borderBottom: "1px solid #dddddd",
     // width: "fit-content",
     display: "flex",
     justifyContent: "center",

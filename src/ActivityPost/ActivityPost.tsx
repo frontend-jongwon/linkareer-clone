@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import { makeStyles, Container } from "@material-ui/core";
 import {
   ActivityPostTitle,
@@ -6,7 +6,7 @@ import {
   ActivityPostTab,
 } from "./components";
 
-const ActivityPost = () => {
+const ActivityPost: FC = () => {
   const classes = useStyles();
 
   return (
@@ -24,6 +24,5 @@ const useStyles = makeStyles(() => ({
   root: {
     padding: 0,
     width: "fit-content",
-    // border: "1px solid",
   },
 }));

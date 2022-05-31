@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import Image from "next/image";
 import {
   Container,
@@ -13,7 +13,7 @@ import Link from "next/link";
 import ActivityPostButton from "./ActivityPostButton";
 import { Launch } from "@material-ui/icons";
 
-const ActivityPostContent = () => {
+const ActivityPostContent: FC = () => {
   const myLoader = () => {
     return `https://res.cloudinary.com/linkareer/image/fetch/f_auto/https://api.linkareer.com/attachments/96766`;
   };
@@ -234,14 +234,11 @@ const useStyles = makeStyles(() => ({
   item: {
     width: "fit-content",
     padding: 0,
-    // marginBottom: 2,
   },
-  //   key: {},
   icon: {
     width: 18,
     height: 18,
     color: "#01A0ff",
-    // marginBottom: 10,
   },
 
   LinkIconWrapper: {

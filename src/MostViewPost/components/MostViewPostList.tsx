@@ -1,17 +1,10 @@
-import React from "react";
-import {
-  makeStyles,
-  Box,
-  Typography,
-  List,
-  ListItem,
-  ListItemText,
-} from "@material-ui/core";
+import React, { FC } from "react";
+import { makeStyles, Box, Typography, List, ListItem } from "@material-ui/core";
 import { BookmarkOutlined } from "@material-ui/icons";
 import Image from "next/image";
 import kakaoStyle from "../../../images/kakaoStyle.png";
 
-const MostViewPostList = () => {
+const MostViewPostList: FC = () => {
   const classes = useStyles();
 
   return (

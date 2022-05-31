@@ -1,15 +1,8 @@
 import React, { FC } from "react";
-import {
-  AppBar,
-  Tabs,
-  Tab,
-  Typography,
-  Box,
-  makeStyles,
-} from "@material-ui/core";
+import { Tabs, Tab, makeStyles } from "@material-ui/core";
 import TabPanel from "../../Utils/TabPanel";
 
-const ActivityPostTab = () => {
+const ActivityPostTab: FC = () => {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 

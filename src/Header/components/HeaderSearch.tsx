@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import {
   Input,
   makeStyles,
@@ -8,11 +8,11 @@ import {
 import glass from "../../../images/glass.png";
 import Image from "next/image";
 
-const HeaderSearch = () => {
+const HeaderSearch: FC = () => {
   const classes = useStyles();
 
   return (
-    <>
+    <div>
       <Input
         className={classes.root}
         disableUnderline
@@ -26,7 +26,7 @@ const HeaderSearch = () => {
           </InputAdornment>
         }
       />
-    </>
+    </div>
   );
 };
 

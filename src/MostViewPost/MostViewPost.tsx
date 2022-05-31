@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import { makeStyles } from "@material-ui/core";
 import { MostViewPostTitle, MostViewPostList } from "./components";
 

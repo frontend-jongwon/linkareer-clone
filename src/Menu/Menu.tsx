@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, FC } from "react";
 import { Tab, Tabs, makeStyles } from "@material-ui/core";
 
-const Menu = () => {
+const Menu: FC = () => {
   const classes = useStyles();
   const [value, setValue] = useState(1);
 
@@ -10,27 +10,29 @@ const Menu = () => {
   };
 
   return (
-    <Tabs
-      value={value}
-      textColor="primary"
-      onChange={handleChange}
-      aria-label="disabled tabs example"
-      className={classes.root}
-      TabIndicatorProps={{
-        style: {
-          display: "none",
-        },
-      }}
-    >
-      <Tab label="공고 달력" disableRipple className={classes.tab} />
-      <Tab label="커뮤니티" disableRipple className={classes.tab} />
-      <Tab label="인턴" disableRipple className={classes.tab} />
-      <Tab label="채용" disableRipple className={classes.tab} />
-      <Tab label="대외활동" disableRipple className={classes.tab} />
-      <Tab label="공모전" disableRipple className={classes.tab} />
-      <Tab label="동아리" disableRipple className={classes.tab} />
-      <Tab label="자소서 만능 검색기" disableRipple className={classes.tab} />
-    </Tabs>
+    <div className={classes.root}>
+      <Tabs
+        value={value}
+        textColor="primary"
+        onChange={handleChange}
+        aria-label="disabled tabs example"
+        className={classes.tabs}
+        TabIndicatorProps={{
+          style: {
+            display: "none",
+          },
+        }}
+      >
+        <Tab label="공고 달력" disableRipple className={classes.tab} />
+        <Tab label="커뮤니티" disableRipple className={classes.tab} />
+        <Tab label="인턴" disableRipple className={classes.tab} />
+        <Tab label="채용" disableRipple className={classes.tab} />
+        <Tab label="대외활동" disableRipple className={classes.tab} />
+        <Tab label="공모전" disableRipple className={classes.tab} />
+        <Tab label="동아리" disableRipple className={classes.tab} />
+        <Tab label="자소서 만능 검색기" disableRipple className={classes.tab} />
+      </Tabs>
+    </div>
   );
 };
 
@@ -38,12 +40,15 @@ export default Menu;
 
 const useStyles = makeStyles(() => ({
   root: {
-    width: "100%",
     backgroundColor: "#01a0ff",
-    paddingLeft: "28.6%",
     display: "flex",
     justifyContent: "center",
     marginBottom: 90,
+  },
+
+  tabs: {
+    marginRight: 340,
+    padding: "4px 0 2px 0",
   },
 
   tab: {
@@ -57,6 +62,7 @@ const useStyles = makeStyles(() => ({
     "&.Mui-selected": {
       fontSize: 16,
       color: "#ffffff",
+      fontWeight: 800,
     },
   },
 }));

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import {
   Typography,
   Box,
@@ -10,7 +10,7 @@ import {
 } from "@material-ui/core";
 import { VisibilityOutlined, ChatBubbleOutline } from "@material-ui/icons";
 
-const ActivityPostTitle = () => {
+const ActivityPostTitle: FC = () => {
   const classes = useStyles();
   return (
     <Container className={classes.root}>
@@ -82,7 +82,5 @@ const useStyles = makeStyles(() => ({
     height: 16,
   },
 
-  viewCommentItem: {
-    // border: "1px solid",
-  },
+  viewCommentItem: {},
 }));

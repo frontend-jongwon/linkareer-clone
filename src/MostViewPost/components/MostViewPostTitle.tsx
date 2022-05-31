@@ -1,8 +1,8 @@
-import React from "react";
+import React, { FC } from "react";
 import { VisibilityOutlined } from "@material-ui/icons";
 import { makeStyles, Typography } from "@material-ui/core";
 
-const MostViewPostTitle = () => {
+const MostViewPostTitle: FC = () => {
   const classes = useStyles();
   return (
     <div className={classes.root}>

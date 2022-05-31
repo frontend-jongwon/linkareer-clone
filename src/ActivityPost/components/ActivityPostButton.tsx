@@ -1,11 +1,11 @@
-import React from "react";
+import React, { FC } from "react";
 import { Box, Button, makeStyles, Typography } from "@material-ui/core";
 import { Bookmark } from "@material-ui/icons";
 
-const ActivityPostButton = () => {
+const ActivityPostButton: FC = () => {
   const classes = useStyles();
   return (
-    <Box className={classes.root}>
+    <div className={classes.root}>
       <Button className={classes.apply}>홈페이지 지원</Button>
       <Button className={classes.bookmark}>
         <Box className={classes.bookmarkIconWrapper}>
@@ -15,7 +15,7 @@ const ActivityPostButton = () => {
           </Typography>
         </Box>
       </Button>
-    </Box>
+    </div>
   );
 };
 

@@ -1,14 +1,7 @@
-import React from "react";
-import {
-  Box,
-  makeStyles,
-  List,
-  ListItem,
-  ListItemText,
-  Typography,
-} from "@material-ui/core";
+import React, { FC } from "react";
+import { Box, makeStyles, List, ListItem, Typography } from "@material-ui/core";
 
-const FooterList = () => {
+const FooterList: FC = () => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -67,7 +60,6 @@ export default FooterList;
 const useStyles = makeStyles(() => ({
   root: {
     display: "flex",
-    // width: "fit-content",
   },
   content: {
     marginRight: 100,

@@ -1,8 +1,8 @@
 import { Box, makeStyles } from "@material-ui/core";
-import React from "react";
+import React, { FC } from "react";
 import { FooterList, FooterLogo, FooterInfo } from "./components";
 
-const Footer = () => {
+const Footer: FC = () => {
   const classes = useStyles();
   return (
     <div className={classes.root}>

@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Box, makeStyles } from "@material-ui/core";
+import React, { useState, FC } from "react";
+import { makeStyles } from "@material-ui/core";
 import { BestPostTitle, BestPostTab } from "./components";
 
 const mockData = {
@@ -65,14 +65,14 @@ const mockData = {
   ],
 };
 
-const BestPost = () => {
+const BestPost: FC = () => {
   const classes = useStyles();
   const [data, setData] = useState(mockData);
   return (
-    <Box className={classes.root}>
+    <div className={classes.root}>
       <BestPostTitle />
       <BestPostTab data={data} />
-    </Box>
+    </div>
   );
 };
 

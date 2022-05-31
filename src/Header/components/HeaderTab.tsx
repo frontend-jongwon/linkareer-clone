@@ -1,18 +1,12 @@
-import React from "react";
-import {
-  List,
-  ListItem,
-  ListItemText,
-  ListItemIcon,
-  makeStyles,
-} from "@material-ui/core";
+import React, { FC } from "react";
+import { List, ListItem, ListItemText, makeStyles } from "@material-ui/core";
 import {
   NotificationsNone,
   EventAvailable,
   BookmarkBorder,
 } from "@material-ui/icons";
 
-const HeaderTab = () => {
+const HeaderTab: FC = () => {
   const classes = useStyles();
 
   return (
@@ -100,7 +94,6 @@ const useStyles = makeStyles(() => ({
 
   signin: {
     width: 146,
-    // border: "1px solid",
     display: "flex",
     justifyContent: "space-between",
     marginLeft: "30px",
