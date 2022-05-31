@@ -15,5 +15,9 @@ const FooterLogo = () => {
 export default FooterLogo;
 
 const useStyles = makeStyles(() => ({
-  root: {},
+  root: {
+    marginTop: 10,
+    padding: 0,
+    height: "fit-content",
+  },
 }));

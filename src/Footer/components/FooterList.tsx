@@ -67,9 +67,14 @@ export default FooterList;
 const useStyles = makeStyles(() => ({
   root: {
     display: "flex",
+    // width: "fit-content",
   },
   content: {
     marginRight: 100,
+    padding: 0,
+    "&:last-child": {
+      marginRight: 40,
+    },
   },
   title: {
     color: "#333333",
@@ -84,6 +89,9 @@ const useStyles = makeStyles(() => ({
   serviceList: {
     padding: 0,
     marginRight: 60,
+    "&:last-child": {
+      marginRight: 0,
+    },
   },
   item: {
     color: "#333333",
