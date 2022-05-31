@@ -1,16 +1,19 @@
 import React, { FC } from "react";
-import { makeStyles } from "@material-ui/core";
-import { HeaderLogo, HeaderSearch, HeaderTab } from "./components";
+import { makeStyles, Box } from "@material-ui/core";
+import { HeaderLogo, HeaderSearch, HeaderTab, HeaderMenu } from "./components";
 
 const Header: FC = () => {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <HeaderLogo />
-      <HeaderSearch />
-      <HeaderTab />
-    </div>
+    <>
+      <div className={classes.root}>
+        <HeaderLogo />
+        <HeaderSearch />
+        <HeaderTab />
+      </div>
+      <HeaderMenu />
+    </>
   );
 };
 

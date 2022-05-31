@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import Box from "@mui/material/Box";
 import Header from "../src/Header/Header";
 import { makeStyles } from "@material-ui/core";
-import Menu from "../src/Menu/Menu";
+import Menu from "../src/Header/components/HeaderMenu";
 import ActivityPost from "../src/ActivityPost/ActivityPost";
 import BestPost from "../src/BestPost/BestPost";
 import MostViewPost from "../src/MostViewPost/MostViewPost";
@@ -13,7 +13,6 @@ const Activity: FC = () => {
   return (
     <div className={classes.root}>
       <Header />
-      <Menu />
       <Box className={classes.wrapper}>
         <Box>
           <ActivityPost />

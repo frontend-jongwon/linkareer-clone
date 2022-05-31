@@ -38,6 +38,6 @@ const useStyles = makeStyles(() => ({
     height: 54,
     padding: "15px 16px 15px 15px",
     border: "2px solid #01a0ff",
-    margin: "0 56px 0 40px",
+    margin: "0 90px 0 40px",
   },
 }));

@@ -1,7 +1,7 @@
 import React, { useState, FC } from "react";
 import { Tab, Tabs, makeStyles } from "@material-ui/core";
 
-const Menu: FC = () => {
+const HeaderMenu: FC = () => {
   const classes = useStyles();
   const [value, setValue] = useState(1);
 
@@ -36,7 +36,7 @@ const Menu: FC = () => {
   );
 };
 
-export default Menu;
+export default HeaderMenu;
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -47,8 +47,8 @@ const useStyles = makeStyles(() => ({
   },
 
   tabs: {
-    marginRight: 340,
-    padding: "4px 0 2px 0",
+    marginRight: 380,
+    padding: "5px 0 2px 0",
   },
 
   tab: {

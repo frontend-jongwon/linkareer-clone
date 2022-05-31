@@ -1,5 +1,5 @@
 import React, { useState, FC } from "react";
-import { makeStyles } from "@material-ui/core";
+import { makeStyles, Box } from "@material-ui/core";
 import { BestPostTitle, BestPostTab } from "./components";
 
 const mockData = {
@@ -70,8 +70,10 @@ const BestPost: FC = () => {
   const [data, setData] = useState(mockData);
   return (
     <div className={classes.root}>
-      <BestPostTitle />
-      <BestPostTab data={data} />
+      <Box className={classes.list}>
+        <BestPostTitle />
+        <BestPostTab data={data} />
+      </Box>
     </div>
   );
 };
@@ -81,9 +83,14 @@ export default BestPost;
 const useStyles = makeStyles(() => ({
   root: {
     width: 300,
-    height: 390,
     padding: 2,
-    marginLeft: 60,
+    marginLeft: 70,
+    position: "relative",
+  },
+
+  list: {
+    position: "fixed",
+    height: 390,
     border: "1px solid #dddddd",
   },
 }));
