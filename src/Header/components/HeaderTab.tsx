@@ -17,7 +17,11 @@ const HeaderTab: FC = () => {
           <ListItemText
             primary="공고 달력"
             primaryTypographyProps={{
-              style: { fontSize: 12, width: 46, marginRight: 35 },
+              style: {
+                fontSize: 12,
+                width: 46,
+                marginRight: 35,
+              },
             }}
           />
         </ListItem>

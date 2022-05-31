@@ -3,7 +3,7 @@ import { Tab, Tabs, makeStyles } from "@material-ui/core";
 
 const HeaderMenu: FC = () => {
   const classes = useStyles();
-  const [value, setValue] = useState(1);
+  const [value, setValue] = useState(2);
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);

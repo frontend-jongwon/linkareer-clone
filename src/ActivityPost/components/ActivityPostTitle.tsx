@@ -80,6 +80,7 @@ const useStyles = makeStyles(() => ({
   icon: {
     width: 16,
     height: 16,
+    color: "#bbbbbb",
   },
 
   viewCommentItem: {},
