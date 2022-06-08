@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import { Tabs, Tab, makeStyles, Box, Typography } from "@material-ui/core";
 import TabPanel from "../../Utils/TabPanel";
+import ActivityPostPanelMaterial from "./ActivityPostPanelMaterial";
 
 interface ActivityPostTabProps {
   activityText: {
@@ -48,10 +49,10 @@ const ActivityPostTab: FC<ActivityPostTabProps> = ({ activityText }) => {
         ></div>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+        <ActivityPostPanelMaterial />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
+        {""}
       </TabPanel>
     </div>
   );
