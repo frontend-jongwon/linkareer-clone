@@ -150,13 +150,14 @@ const useStyles = makeStyles(() => ({
   iconCountWrapper: {
     backgroundColor: "#333333",
     color: "#ffffff",
-    width: 39,
+    width: 45,
     height: 24,
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 3,
     margin: "5px 5px 0 0",
+    paddingRight: 3,
   },
 
   icon: {
@@ -165,6 +166,7 @@ const useStyles = makeStyles(() => ({
   },
   count: {
     fontSize: 12,
+    fontWeight: 500,
   },
 
   comment: {
