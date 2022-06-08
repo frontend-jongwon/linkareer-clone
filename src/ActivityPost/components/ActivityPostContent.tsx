@@ -287,7 +287,7 @@ const useStyles = makeStyles(() => ({
 
   content: {
     marginLeft: 50,
-    marginRight: 150,
+    marginRight: 20,
   },
 
   item: {

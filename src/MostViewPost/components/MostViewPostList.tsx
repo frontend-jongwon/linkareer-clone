@@ -3,37 +3,116 @@ import { makeStyles, Box, Typography, List, ListItem } from "@material-ui/core";
 import { BookmarkOutlined } from "@material-ui/icons";
 import Image from "next/image";
 import kakaoStyle from "../../../images/kakaoStyle.png";
+import { gql, useQuery } from "@apollo/client";
+import { differenceInCalendarDays } from "date-fns";
 
-const MostViewPostList: FC = () => {
+type categorieType = {
+  id: string;
+  name: string;
+};
+
+type interestType = {
+  id: string;
+  naem: string;
+};
+
+interface MostViewPostListProps {
+  post: {
+    activityTypeID: number;
+    categories: categorieType[];
+    id: number;
+    interests: interestType[];
+  };
+}
+
+const MOST_VIEW_POST = gql`
+  query FamousActivityList($input: FamousActivityListInput!) {
+    famousActivityList(input: $input) {
+      activities {
+        id
+        title
+        type
+        thumbnailImage {
+          id
+          url
+        }
+        logoImage {
+          id
+        }
+        scrapCount
+        organizationName
+        recruitType
+        recruitCloseAt
+        viewCount
+        replyCount
+      }
+    }
+  }
+`;
+
+const MostViewPostList: FC<MostViewPostListProps> = ({ post }) => {
   const classes = useStyles();
+
+  const { data, error, loading } = useQuery(MOST_VIEW_POST, {
+    variables: {
+      input: {
+        activityID: post?.id,
+        activityTypeIDs: [post?.activityTypeID || 0],
+        interestIDs:
+          post?.interests?.map((interest) =>
+            parseInt(interest?.id || "0", 10)
+          ) || [],
+        categoryIDs:
+          post?.categories?.map((category) =>
+            parseInt(category?.id || "0", 10)
+          ) || [],
+        limit: 4,
+      },
+    },
+  });
+
+  const famousActivityList = data?.famousActivityList;
+  console.log("adsasddas", data?.famousActivityList);
 
   return (
     <div className={classes.root}>
-      <Box className={classes.content}>
-        <Box className={classes.iconCountRight}>
-          <Box className={classes.iconCountWrapper}>
-            <BookmarkOutlined className={classes.icon} />
-            <Typography className={classes.count}>79</Typography>
+      {famousActivityList?.activities?.map((item: any) => (
+        <Box className={classes.item}>
+          <Box className={classes.content} key={item.id}>
+            <Box className={classes.iconCountRight}>
+              <Box className={classes.iconCountWrapper}>
+                <BookmarkOutlined className={classes.icon} />
+                <Typography className={classes.count}>
+                  {item.scrapCount}
+                </Typography>
+              </Box>
+            </Box>
+            <Box>
+              <Image src={item?.thumbnailImage?.url} width={171} height={60} />
+            </Box>
+            <Box className={classes.comment}>
+              <Typography className={classes.text}>담당자 답변받기</Typography>
+            </Box>
+          </Box>
+          <Box>
+            <Typography className={classes.title}>{item.title}</Typography>
+            <Typography className={classes.subTitle}>
+              {item.organizationName}
+            </Typography>
+            <List className={classes.desc}>
+              <ListItem className={classes.detail}>
+                D-{differenceInCalendarDays(item.recruitCloseAt, new Date())}
+              </ListItem>
+              <ListItem className={classes.detail}>
+                조회 {item.viewCount}
+              </ListItem>
+              <ListItem className={classes.detail}>
+                댓글 {item.replyCount}
+              </ListItem>
+            </List>
           </Box>
         </Box>
-        <Box>
-          <Image src={kakaoStyle} width={171} height={60} />
-        </Box>
-        <Box className={classes.comment}>
-          <Typography className={classes.text}>담당자 답변받기</Typography>
-        </Box>
-      </Box>
-      <Box>
-        <Typography className={classes.title}>
-          지그재그 콘텐츠 운영 인턴
-        </Typography>
-        <Typography className={classes.subTitle}>카카오스타일</Typography>
-        <List className={classes.desc}>
-          <ListItem className={classes.detail}>D-15</ListItem>
-          <ListItem className={classes.detail}>조회 4,142</ListItem>
-          <ListItem className={classes.detail}>댓글 0</ListItem>
-        </List>
-      </Box>
+      ))}
     </div>
   );
 };
@@ -42,8 +121,15 @@ export default MostViewPostList;
 
 const useStyles = makeStyles(() => ({
   root: {
-    width: "fit-content",
     padding: "22px 0 22px 0",
+
+    width: "100%",
+    display: "flex",
+  },
+
+  item: {
+    width: "fit-content",
+    marginRight: 10,
   },
 
   content: {
@@ -98,8 +184,14 @@ const useStyles = makeStyles(() => ({
   title: {
     fontSize: 16,
     color: "#333333",
-    marginBottom: 10,
     fontWeight: 800,
+    width: 171,
+    height: 50,
+    overflow: "hidden",
+    marginBottom: 10,
+    letterSpacing: -0.48,
+    // border: "1px solid",
+    textOverflow: "ellipsis",
   },
   subTitle: {
     fontSize: 12,

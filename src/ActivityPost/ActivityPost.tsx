@@ -70,7 +70,6 @@ const ActivityPost: FC = () => {
 
   const activity = data?.activity;
 
-  console.log(activity);
   return (
     <Container className={classes.root}>
       <ActivityPostTitle
@@ -90,6 +89,5 @@ export default ActivityPost;
 const useStyles = makeStyles(() => ({
   root: {
     padding: 0,
-    width: "fit-content",
   },
 }));
