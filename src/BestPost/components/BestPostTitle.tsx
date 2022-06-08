@@ -30,8 +30,9 @@ const useStyles = makeStyles(() => ({
   },
 
   title: {
-    fontSize: 15,
-    fontWeight: 700,
+    fontSize: 15.5,
+    fontWeight: 800,
+    letterSpacing: -0.48,
   },
   buttonIconWrapper: {
     display: "flex",

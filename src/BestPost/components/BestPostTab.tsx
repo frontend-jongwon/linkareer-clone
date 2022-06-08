@@ -1,40 +1,64 @@
 import React, { useState, FC } from "react";
-import { Tab, Tabs, makeStyles } from "@material-ui/core";
+import { Tab, Tabs, makeStyles, Box } from "@material-ui/core";
 import TabPanel from "../../Utils/TabPanel";
 import BestPostList from "./BestPostList";
+import { useQuery, gql } from "@apollo/client";
+import clsx from "clsx";
 
-export type mockType = {
-  id: number;
-  desc: string;
+export type PostType = {
+  id: string;
+  title: string;
   commentCount: number;
+  url: string;
 };
 
-export type dataType = {
-  realTime: mockType[];
-  weekly: mockType[];
-  monthly: mockType[];
-  commentOrder: mockType[];
-  likeOrder: mockType[];
-};
-
-interface BestPostTabProps {
-  data: dataType;
+enum BestPostType {
+  recent = "RECENT",
+  lastWeek = "LAST_WEEK",
+  lastMonth = "LAST_MONTH",
+  replyCount = "REPLY_COUNT",
+  voteCount = "VOTE_COUNT",
 }
 
-const BestPostTab: FC<BestPostTabProps> = ({ data }) => {
-  const [value, setValue] = useState(1);
+const BEST_POST_DATA = gql`
+  query CommunityBestPostList($input: CommunityBestPostListInput!) {
+    communityBestPostList(input: $input) {
+      data
+    }
+  }
+`;
+
+const BestPostTab: FC = () => {
+  const [bestPostOrder, setBestPostOrder] = useState<BestPostType>(
+    BestPostType.recent
+  );
+
+  const { data, loading, error } = useQuery(BEST_POST_DATA, {
+    variables: {
+      input: {
+        type: bestPostOrder,
+        pagination: {
+          page: 1,
+          pageSize: 10,
+        },
+      },
+    },
+  });
+
+  const bestPostList = data?.communityBestPostList.data.bestPosts;
   const classes = useStyles();
 
-  const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
-    setValue(newValue);
+  const handleChange = (
+    event: React.ChangeEvent<{}>,
+    newValue: BestPostType
+  ) => {
+    setBestPostOrder(newValue);
   };
-
-  console.log(data);
 
   return (
     <div className={classes.root}>
       <Tabs
-        value={value}
+        value={bestPostOrder}
         indicatorColor="primary"
         textColor="primary"
         onChange={handleChange}
@@ -43,26 +67,47 @@ const BestPostTab: FC<BestPostTabProps> = ({ data }) => {
         variant="fullWidth"
         className={classes.tabs}
       >
-        <Tab label="실시간" value={1} className={classes.tab} />
-        <Tab label="주간" value={2} className={classes.tab} />
-        <Tab label="월간" value={3} className={classes.tab} />
-        <Tab label="댓글순" value={4} className={classes.tab} />
-        <Tab label="추천순" value={5} className={classes.tab} />
+        <Tab
+          label="실시간"
+          value={BestPostType.recent}
+          className={clsx(classes.tab, {
+            [classes.selected]: bestPostOrder === BestPostType.recent,
+          })}
+        />
+        <Tab
+          label="주간"
+          value={BestPostType.lastWeek}
+          className={clsx(classes.tab, {
+            [classes.selected]: bestPostOrder === BestPostType.lastWeek,
+          })}
+        />
+        <Tab
+          label="월간"
+          value={BestPostType.lastMonth}
+          className={clsx(classes.tab, {
+            [classes.selected]: bestPostOrder === BestPostType.lastMonth,
+          })}
+        />
+        <Tab
+          label="댓글순"
+          value={BestPostType.replyCount}
+          className={clsx(classes.tab, {
+            [classes.selected]: bestPostOrder === BestPostType.replyCount,
+          })}
+        />
+        <Tab
+          label="추천순"
+          value={BestPostType.voteCount}
+          className={clsx(classes.tab, {
+            [classes.selected]: bestPostOrder === BestPostType.voteCount,
+          })}
+        />
       </Tabs>
-      <TabPanel value={value} index={1}>
-        {data && data.realTime.map((post) => <BestPostList post={post} />)}
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        {data && data.weekly.map((post) => <BestPostList post={post} />)}
-      </TabPanel>
-      <TabPanel value={value} index={3}>
-        {data && data.monthly.map((post) => <BestPostList post={post} />)}
-      </TabPanel>
-      <TabPanel value={value} index={4}>
-        {data && data.commentOrder.map((post) => <BestPostList post={post} />)}
-      </TabPanel>
-      <TabPanel value={value} index={5}>
-        {data && data.likeOrder.map((post) => <BestPostList post={post} />)}
+      <TabPanel value={bestPostOrder} index={bestPostOrder}>
+        {bestPostList &&
+          bestPostList.map((post: PostType, index: number) => (
+            <BestPostList post={post} key={post.id} index={index} />
+          ))}
       </TabPanel>
     </div>
   );
@@ -80,19 +125,19 @@ const useStyles = makeStyles(() => ({
     borderBottom: "1.5px solid #dddddd",
     height: 0,
     minHeight: 36,
-    marginLeft: 8,
+    margin: "0 8px 0 8px",
   },
 
   tab: {
-    width: "100%",
     minWidth: 55,
     padding: 0,
     minHeight: 36,
     fontWeight: 400,
     color: "#333333",
     fontSize: 12,
-    "&.Mui-selected": {
-      color: "#01A0FF",
-    },
+  },
+
+  selected: {
+    color: "#01A0FF",
   },
 }));

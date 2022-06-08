@@ -12,10 +12,49 @@ import {
 import Link from "next/link";
 import ActivityPostButton from "./ActivityPostButton";
 import { Launch } from "@material-ui/icons";
+import { format } from "date-fns";
 
-const ActivityPostContent: FC = () => {
+type categoriesType = {
+  id: string;
+  name: string;
+};
+
+type regionDistrictsType = {
+  id: string;
+  name: string;
+  region: region;
+};
+
+type region = {
+  id: string;
+  name: string;
+};
+
+type thumbnailImage = {
+  id: string;
+  url: string;
+};
+
+interface ActivityPostItemProps {
+  activityPostItem: {
+    thumbnailImage: thumbnailImage;
+    activityTypeID: string;
+    organizationName: string;
+    organizationType: string;
+    createdAt: Date;
+    homepageURL: string;
+    categories: categoriesType[];
+    jobTypes: string[];
+    recruitCloseAt: Date;
+    regionDistricts: regionDistrictsType[];
+  };
+}
+
+const ActivityPostContent: FC<ActivityPostItemProps> = ({
+  activityPostItem,
+}) => {
   const myLoader = () => {
-    return `https://res.cloudinary.com/linkareer/image/fetch/f_auto/https://api.linkareer.com/attachments/96766`;
+    return activityPostItem?.thumbnailImage.url;
   };
 
   const classes = useStyles();
@@ -26,13 +65,13 @@ const ActivityPostContent: FC = () => {
         <Image
           loader={myLoader}
           src="contentImage.png"
-          width={245}
-          height={245}
+          width={165}
+          height={69}
         />
       </Box>
       <Box>
         <Typography variant="h6" className={classes.title}>
-          Tridge
+          {activityPostItem?.organizationName}
         </Typography>
         <Box className={classes.row}>
           <List className={classes.content}>
@@ -54,7 +93,7 @@ const ActivityPostContent: FC = () => {
                   style: { fontSize: 15, fontWeight: 400 },
                 }}
               >
-                스타트업
+                {activityPostItem?.organizationType}
               </ListItemText>
             </ListItem>
             <ListItem className={classes.item}>
@@ -75,7 +114,7 @@ const ActivityPostContent: FC = () => {
                   style: { fontSize: 15, fontWeight: 400 },
                 }}
               >
-                무역/유통
+                {activityPostItem?.categories[0].name}
               </ListItemText>
             </ListItem>
             <ListItem className={classes.item}>
@@ -96,7 +135,7 @@ const ActivityPostContent: FC = () => {
                   style: { fontSize: 15, fontWeight: 400 },
                 }}
               >
-                인턴
+                {activityPostItem?.jobTypes[0] === "INTERN" && "인턴"}
               </ListItemText>
             </ListItem>
             <ListItem className={classes.item}>
@@ -117,7 +156,13 @@ const ActivityPostContent: FC = () => {
                   style: { fontSize: 15, fontWeight: 400 },
                 }}
               >
-                서울 강남구, 서초구
+                {activityPostItem?.regionDistricts[0].region.name} {""}
+                {activityPostItem?.regionDistricts[0].name}
+                {", "}
+                {activityPostItem?.regionDistricts[1].name}
+                {", "}
+                {activityPostItem?.regionDistricts[2].region.name} {""}
+                {activityPostItem?.regionDistricts[2].name}
               </ListItemText>
             </ListItem>
           </List>
@@ -140,7 +185,14 @@ const ActivityPostContent: FC = () => {
                   style: { fontSize: 15, fontWeight: 400 },
                 }}
               >
-                22.5.16 ~ 모집시 마감
+                {activityPostItem &&
+                  `${format(
+                    new Date(activityPostItem?.createdAt),
+                    "yy.MM.dd"
+                  )} ~ ${format(
+                    new Date(activityPostItem?.recruitCloseAt),
+                    "yy.MM.dd"
+                  )}`}
               </ListItemText>
             </ListItem>
             <ListItem className={classes.item}>
@@ -161,7 +213,7 @@ const ActivityPostContent: FC = () => {
                   style: { fontSize: 15, fontWeight: 400 },
                 }}
               >
-                0명
+                00명
               </ListItemText>
             </ListItem>
             <ListItem className={classes.item}>
@@ -183,7 +235,11 @@ const ActivityPostContent: FC = () => {
                 }}
               >
                 <Box className={classes.LinkIconWrapper}>
-                  <Link href="">https://www.tridge.com/</Link>
+                  <Link href="/">
+                    <a href="" className={classes.url}>
+                      {activityPostItem?.homepageURL}
+                    </a>
+                  </Link>
                   <Launch className={classes.icon} />
                 </Box>
               </ListItemText>
@@ -216,11 +272,14 @@ const useStyles = makeStyles(() => ({
     border: "1px solid #dddddd",
     width: 245,
     height: 245,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
 
   title: {
     color: "#333333",
-    fontWeight: 600,
+    fontWeight: 700,
     fontSize: 18,
     marginLeft: 50,
     marginBottom: 6,
@@ -228,7 +287,7 @@ const useStyles = makeStyles(() => ({
 
   content: {
     marginLeft: 50,
-    marginRight: 100,
+    marginRight: 150,
   },
 
   item: {
@@ -244,5 +303,11 @@ const useStyles = makeStyles(() => ({
   LinkIconWrapper: {
     display: "flex",
     alignItems: "center",
+  },
+
+  url: {
+    width: 190,
+    overflow: "hidden",
+    textOverflow: "ellipsis",
   },
 }));

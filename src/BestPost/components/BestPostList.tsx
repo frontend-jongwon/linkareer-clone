@@ -7,21 +7,22 @@ import {
   Typography,
 } from "@material-ui/core";
 
-type postType = {
-  id: number;
-  desc: string;
-  commentCount: number;
-};
-
 interface BestPostLIstProps {
-  post: postType;
+  post: {
+    id: string;
+    title: string;
+    commentCount: number;
+    url: string;
+  };
+  index: number;
 }
 
-const BestPostLIst: FC<BestPostLIstProps> = ({ post }) => {
+const BestPostLIst: FC<BestPostLIstProps> = ({ post, index }) => {
   const classes = useStyles();
   return (
-    <List className={classes.root} key={post.id}>
+    <List className={classes.root}>
       <ListItem className={classes.item}>
+        <Typography className={classes.number}>{index + 1}</Typography>
         <ListItemText
           primaryTypographyProps={{
             style: {
@@ -32,8 +33,9 @@ const BestPostLIst: FC<BestPostLIstProps> = ({ post }) => {
           }}
           className={classes.text}
         >
-          {post.id} {post.desc}
+          {post.title}
         </ListItemText>
+
         <Typography className={classes.count}>{post.commentCount}</Typography>
       </ListItem>
     </List>
@@ -47,19 +49,32 @@ const useStyles = makeStyles(() => ({
     marginTop: 2,
     marginLeft: 10,
     padding: 0,
+    width: 265,
+    maxWidth: 250,
+    "&:first-child": {
+      marginTop: 12,
+    },
   },
 
   text: {
-    "&::first-letter": {
-      color: "#01a0ff",
-      fontWeight: 800,
-      fontSize: 13,
-    },
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    height: 19,
   },
 
   item: {
     padding: 0,
     width: "fit-content",
+    display: "flex",
+    alignItems: "center",
+  },
+
+  number: {
+    color: "#01a0ff",
+    fontWeight: 800,
+    fontSize: 13,
+    marginRight: 5,
+    marginBottom: 2,
   },
 
   count: {

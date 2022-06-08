@@ -1,13 +1,28 @@
 import React, { FC } from "react";
-import { Tabs, Tab, makeStyles } from "@material-ui/core";
+import { Tabs, Tab, makeStyles, Box, Typography } from "@material-ui/core";
 import TabPanel from "../../Utils/TabPanel";
 
-const ActivityPostTab: FC = () => {
+interface ActivityPostTabProps {
+  activityText: {
+    id: string;
+    text: string;
+  };
+}
+
+const ActivityPostTab: FC<ActivityPostTabProps> = ({ activityText }) => {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);
+  };
+
+  // console.log(JSON.parse(activityText?.text));
+
+  const createMarkup = () => {
+    return {
+      __html: activityText?.text,
+    };
   };
 
   return (
@@ -26,7 +41,11 @@ const ActivityPostTab: FC = () => {
         <Tab className={classes.tab} label="담당자Q&A" />
       </Tabs>
       <TabPanel value={value} index={0}>
-        Item One
+        <Typography className={classes.title}>상세내용</Typography>
+        <div
+          dangerouslySetInnerHTML={createMarkup()}
+          className={classes.info}
+        ></div>
       </TabPanel>
       <TabPanel value={value} index={1}>
         Item Two
@@ -49,6 +68,7 @@ const useStyles = makeStyles(() => ({
     width: "100%",
     padding: 0,
     borderBottom: "1.5px solid #dddddd",
+    marginBottom: 42,
   },
 
   tab: {
@@ -59,4 +79,19 @@ const useStyles = makeStyles(() => ({
       color: "#01A0FF",
     },
   },
+
+  info: {
+    "& img": {
+      width: 926,
+    },
+  },
+
+  title: {
+    fontSize: 18,
+    color: "#333333",
+    marginBottom: 21,
+    fontWeight: 800,
+  },
+
+  panel: {},
 }));

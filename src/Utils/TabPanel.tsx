@@ -4,14 +4,15 @@ import {
   Tabs,
   Tab,
   Typography,
+  Container,
   Box,
   makeStyles,
 } from "@material-ui/core";
 
 interface TabPanelProps {
   children: React.ReactNode;
-  value: number;
-  index: number;
+  value: string | number;
+  index: string | number;
 }
 
 const TabPanel: FC<TabPanelProps> = ({ children, value, index, ...other }) => {
@@ -27,7 +28,7 @@ const TabPanel: FC<TabPanelProps> = ({ children, value, index, ...other }) => {
     >
       {value === index && (
         <Box>
-          <Typography>{children}</Typography>
+          <Typography component={"span"}>{children}</Typography>
         </Box>
       )}
     </div>

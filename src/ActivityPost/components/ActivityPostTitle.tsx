@@ -9,21 +9,39 @@ import {
   makeStyles,
 } from "@material-ui/core";
 import { VisibilityOutlined, ChatBubbleOutline } from "@material-ui/icons";
+import { differenceInCalendarDays } from "date-fns";
 
-const ActivityPostTitle: FC = () => {
+interface ActivityPostTitleProps {
+  activityTitle: string;
+  activityViewCount: number;
+  activityReplyCount: number;
+  activityRecruitCloseAt: Date;
+}
+
+const ActivityPostTitle: FC<ActivityPostTitleProps> = ({
+  activityTitle,
+  activityViewCount,
+  activityReplyCount,
+  activityRecruitCloseAt,
+}) => {
   const classes = useStyles();
+  const recruitCloseAt = differenceInCalendarDays(
+    activityRecruitCloseAt,
+    new Date()
+  );
+
   return (
     <Container className={classes.root}>
-      <Box className={classes.textBox}>모집시 마감(D-82)</Box>
+      <Box className={classes.textBox}>D-{recruitCloseAt}</Box>
       <Box className={classes.rowText}>
         <Typography variant="h5" className={classes.title}>
-          [Tridge] 해외영업 및 무역 인턴십 (중화권 마켓, 3개월 전환형)
+          {activityTitle}
         </Typography>
         <List className={classes.viewCommentWrapper}>
           <ListItem className={classes.viewCommentItem}>
             <VisibilityOutlined className={classes.icon} />
             <ListItemText
-              primary="214"
+              primary={`${activityViewCount}`}
               primaryTypographyProps={{
                 style: { fontSize: 12, marginLeft: 5 },
               }}
@@ -32,7 +50,7 @@ const ActivityPostTitle: FC = () => {
           <ListItem className={classes.viewCommentItem}>
             <ChatBubbleOutline className={classes.icon} />
             <ListItemText
-              primary="0"
+              primary={`${activityReplyCount}`}
               primaryTypographyProps={{
                 style: { fontSize: 12, marginLeft: 5 },
               }}
@@ -55,20 +73,22 @@ const useStyles = makeStyles(() => ({
     backgroundColor: "#4a5f6e",
     color: "#ffffff",
     width: "fit-content",
-    padding: "5px 10px 5px 10px",
+    padding: "4px 8px 3px 8px",
     fontWeight: 700,
+    fontSize: 15,
   },
 
   title: {
     color: "#363636",
     fontWeight: 700,
     marginRight: 100,
-    fontSize: 28,
+    fontSize: 29,
   },
 
   rowText: {
     display: "flex",
     alignItems: "center",
+    justifyContent: "space-between",
   },
 
   viewCommentWrapper: {
