@@ -37,15 +37,18 @@ interface ActivityPostTabProps {
   };
   activityTypeID: ActivityTypeID;
   activityTitle: string;
+  activityTab: number;
+  onTabChange: (value: number) => void;
 }
 
 const ActivityPostTab: FC<ActivityPostTabProps> = ({
   activityText,
   activityTypeID,
   activityTitle,
+  activityTab,
+  onTabChange,
 }) => {
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
 
   const { data, error, loading } = useQuery(ACTIVITY_POST_MATERIAL, {
     variables: {
@@ -69,7 +72,7 @@ const ActivityPostTab: FC<ActivityPostTabProps> = ({
     data?.communityPostSearch?.data?.postSearch?.nodes?.slice(0, 3);
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
-    setValue(newValue);
+    onTabChange(newValue);
   };
 
   const createMarkup = () => {
@@ -81,7 +84,7 @@ const ActivityPostTab: FC<ActivityPostTabProps> = ({
   return (
     <div className={classes.root}>
       <Tabs
-        value={value}
+        value={activityTab}
         onChange={handleChange}
         aria-label="simple tabs example"
         TabIndicatorProps={{
@@ -92,31 +95,31 @@ const ActivityPostTab: FC<ActivityPostTabProps> = ({
       >
         <Tab
           className={clsx(classes.tab, {
-            [classes.selected]: value === 0,
+            [classes.selected]: activityTab === 0,
           })}
           label="상세내용"
         />
         <Tab
           className={clsx(classes.tab, {
-            [classes.selected]: value === 1,
+            [classes.selected]: activityTab === 1,
           })}
           label="합격자료"
         />
         <Tab
           className={clsx(classes.tab, {
-            [classes.selected]: value === 2,
+            [classes.selected]: activityTab === 2,
           })}
           label="담당자Q&A"
         />
       </Tabs>
-      <TabPanel value={value} index={0}>
+      <TabPanel value={activityTab} index={0}>
         <Typography className={classes.title}>상세내용</Typography>
         <div
           dangerouslySetInnerHTML={createMarkup()}
           className={classes.info}
         ></div>
       </TabPanel>
-      <TabPanel value={value} index={1}>
+      <TabPanel value={activityTab} index={1}>
         <div className={classes.panelRoot}>
           <Box className={classes.content}>
             <Box className={classes.wrapper}>
@@ -164,7 +167,7 @@ const ActivityPostTab: FC<ActivityPostTabProps> = ({
           <Divider className={classes.divider} />
         </div>
       </TabPanel>
-      <TabPanel value={value} index={2}>
+      <TabPanel value={activityTab} index={2}>
         {""}
       </TabPanel>
     </div>

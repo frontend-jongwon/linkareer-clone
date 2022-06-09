@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { makeStyles, Container } from "@material-ui/core";
 import {
   ActivityPostTitle,
@@ -62,6 +62,12 @@ const ActivityPost: FC = () => {
     variables: { activityId: "90182" },
   });
 
+  const [activityTab, setActivityTab] = useState(0);
+
+  const handleTabChange = (value: number) => {
+    setActivityTab(value);
+  };
+
   const activity = data?.activity;
 
   return (
@@ -77,6 +83,8 @@ const ActivityPost: FC = () => {
         activityText={activity?.texts[0]}
         activityTypeID={activity?.activityTypeID}
         activityTitle={activity?.title}
+        activityTab={activityTab}
+        onTabChange={handleTabChange}
       />
     </Container>
   );
