@@ -20,24 +20,7 @@ import {
 import { useQuery, gql } from "@apollo/client";
 import { format } from "date-fns";
 import { BoardSlug, ActivityTypeID } from "../../Utils/enums";
-import { ValuesFromActivityType } from "../../Utils/types";
-
-export const getValueFromActivityType = (
-  activityTypeID: ActivityTypeID,
-  values: ValuesFromActivityType
-) => {
-  const navigate: {
-    [key in ActivityTypeID]: any;
-  } = {
-    [ActivityTypeID.ACTIVITY]: values.activity,
-    [ActivityTypeID.CONTEST]: values.contest,
-    [ActivityTypeID.CLUB]: values.club,
-    [ActivityTypeID.INTERN]: values.intern,
-    [ActivityTypeID.RECRUIT]: values.recruit,
-  };
-
-  return navigate[activityTypeID];
-};
+import { getValueFromActivityType } from "../../Utils/getValueFromActivityType";
 
 const ACTIVITY_POST_MATERIAL = gql`
   query CommunityPostSearch($input: CommunityPostSearchInput!) {
