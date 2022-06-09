@@ -26,12 +26,6 @@ const ACTIVITY_POST = gql`
       viewCount
       replyCount
     }
-    # status
-    #   regions {
-    #   id
-    #   name
-    # }
-    # recruitScale
   }
 
   fragment ActivityPost_item on Activity {
@@ -79,7 +73,11 @@ const ActivityPost: FC = () => {
         activityRecruitCloseAt={activity?.recruitCloseAt}
       />
       <ActivityPostContent activityPostItem={activity} />
-      <ActivityPostTab activityText={activity?.texts[0]} />
+      <ActivityPostTab
+        activityText={activity?.texts[0]}
+        activityTypeID={activity?.activityTypeID}
+        activityTitle={activity?.title}
+      />
     </Container>
   );
 };

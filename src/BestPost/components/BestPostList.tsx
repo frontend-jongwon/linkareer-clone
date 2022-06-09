@@ -46,20 +46,21 @@ export default BestPostLIst;
 
 const useStyles = makeStyles(() => ({
   root: {
-    marginTop: 2,
+    marginTop: 5,
     marginLeft: 10,
     padding: 0,
     width: 265,
     maxWidth: 250,
     "&:first-child": {
-      marginTop: 12,
+      marginTop: 5,
     },
   },
 
   text: {
     overflow: "hidden",
     textOverflow: "ellipsis",
-    height: 19,
+    padding: 0,
+    height: 17,
   },
 
   item: {
@@ -67,6 +68,7 @@ const useStyles = makeStyles(() => ({
     width: "fit-content",
     display: "flex",
     alignItems: "center",
+    // border: "1px solid",
   },
 
   number: {

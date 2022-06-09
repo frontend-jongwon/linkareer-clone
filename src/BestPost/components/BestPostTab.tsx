@@ -121,20 +121,20 @@ const useStyles = makeStyles(() => ({
   tabs: {
     display: "inline-flex",
     padding: 0,
-    borderTop: "1.5px solid #dddddd",
-    borderBottom: "1.5px solid #dddddd",
     height: 0,
-    minHeight: 36,
+    minHeight: 34,
     margin: "0 8px 0 8px",
   },
 
   tab: {
-    minWidth: 55,
+    minWidth: 54,
     padding: 0,
-    minHeight: 36,
-    fontWeight: 400,
+    minHeight: 34,
+    fontWeight: 500,
     color: "#333333",
     fontSize: 12,
+    borderTop: "1.5px solid #eeeeee",
+    borderBottom: "1.5px solid #eeeeee",
   },
 
   selected: {
