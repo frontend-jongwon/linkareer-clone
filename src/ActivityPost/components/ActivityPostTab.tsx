@@ -19,28 +19,8 @@ import {
 } from "@material-ui/icons";
 import { useQuery, gql } from "@apollo/client";
 import { format } from "date-fns";
-
-export enum ActivityTypeID {
-  ACTIVITY = 1,
-  CLUB = 2,
-  CONTEST = 3,
-  INTERN = 4,
-  RECRUIT = 5,
-}
-export enum BoardSlug {
-  ACTIVITY = "activity1",
-  CONTEST = "contest",
-  CLUB = "activity",
-  INTERN = "interndata",
-}
-
-type ValuesFromActivityType = {
-  activity: any;
-  contest: any;
-  club: any;
-  intern?: any;
-  recruit: any;
-};
+import { BoardSlug, ActivityTypeID } from "../../Utils/enums";
+import { ValuesFromActivityType } from "../../Utils/types";
 
 export const getValueFromActivityType = (
   activityTypeID: ActivityTypeID,
@@ -55,10 +35,6 @@ export const getValueFromActivityType = (
     [ActivityTypeID.INTERN]: values.intern,
     [ActivityTypeID.RECRUIT]: values.recruit,
   };
-
-  if (!activityTypeID) {
-    throw new Error("Activity type is not valid.");
-  }
 
   return navigate[activityTypeID];
 };
@@ -172,7 +148,7 @@ const ActivityPostTab: FC<ActivityPostTabProps> = ({
             </Box>
           </Box>
 
-          {recommendPostMaterial.map((post: any) => (
+          {recommendPostMaterial?.map((post: any) => (
             <>
               <Box className={classes.contentWrapper}>
                 <Typography className={classes.headTitle}>

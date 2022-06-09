@@ -2,19 +2,9 @@ import React, { FC } from "react";
 import { makeStyles, Box, Typography, List, ListItem } from "@material-ui/core";
 import { BookmarkOutlined } from "@material-ui/icons";
 import Image from "next/image";
-import kakaoStyle from "../../../images/kakaoStyle.png";
 import { gql, useQuery } from "@apollo/client";
 import { differenceInCalendarDays } from "date-fns";
-
-type categorieType = {
-  id: string;
-  name: string;
-};
-
-type interestType = {
-  id: string;
-  naem: string;
-};
+import { categorieType, interestType } from "../../Utils/types";
 
 interface MostViewPostListProps {
   post: {

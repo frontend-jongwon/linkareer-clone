@@ -3,22 +3,9 @@ import { Tab, Tabs, makeStyles, Box } from "@material-ui/core";
 import TabPanel from "../../Utils/TabPanel";
 import BestPostList from "./BestPostList";
 import { useQuery, gql } from "@apollo/client";
+import { BestPostType } from "../../Utils/enums";
+import { PostType } from "../../Utils/types";
 import clsx from "clsx";
-
-export type PostType = {
-  id: string;
-  title: string;
-  commentCount: number;
-  url: string;
-};
-
-enum BestPostType {
-  recent = "RECENT",
-  lastWeek = "LAST_WEEK",
-  lastMonth = "LAST_MONTH",
-  replyCount = "REPLY_COUNT",
-  voteCount = "VOTE_COUNT",
-}
 
 const BEST_POST_DATA = gql`
   query CommunityBestPostList($input: CommunityBestPostListInput!) {

@@ -13,27 +13,12 @@ import Link from "next/link";
 import ActivityPostButton from "./ActivityPostButton";
 import { Launch } from "@material-ui/icons";
 import { format } from "date-fns";
-
-type categoriesType = {
-  id: string;
-  name: string;
-};
-
-type regionDistrictsType = {
-  id: string;
-  name: string;
-  region: region;
-};
-
-type region = {
-  id: string;
-  name: string;
-};
-
-type thumbnailImage = {
-  id: string;
-  url: string;
-};
+import {
+  categoriesType,
+  regionDistrictsType,
+  // region,
+  thumbnailImage,
+} from "../../Utils/types";
 
 interface ActivityPostItemProps {
   activityPostItem: {
