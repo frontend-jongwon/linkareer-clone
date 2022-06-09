@@ -62,7 +62,6 @@ const MostViewPostList: FC<MostViewPostListProps> = ({ post }) => {
   });
 
   const famousActivityList = data?.famousActivityList;
-  console.log("adsasddas", data?.famousActivityList);
 
   return (
     <div className={classes.root}>
@@ -182,7 +181,6 @@ const useStyles = makeStyles(() => ({
     overflow: "hidden",
     marginBottom: 10,
     letterSpacing: -0.48,
-    // border: "1px solid",
     textOverflow: "ellipsis",
   },
   subTitle: {

@@ -217,7 +217,6 @@ const useStyles = makeStyles(() => ({
   },
 
   content: {
-    // border: "1px solid",
     display: "flex",
     width: "100%",
     alignItems: "center",
