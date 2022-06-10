@@ -1,6 +1,6 @@
 import React, { useState, FC } from "react";
 import { makeStyles, Box } from "@material-ui/core";
-import { BestPostTitle, BestPostTab } from "./components";
+import { BestPostTitle, BestPostTab } from "../components";
 
 const BestPost: FC = () => {
   const classes = useStyles();

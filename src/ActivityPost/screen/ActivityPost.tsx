@@ -4,7 +4,7 @@ import {
   ActivityPostTitle,
   ActivityPostContent,
   ActivityPostTab,
-} from "./components";
+} from "../components";
 import gql from "graphql-tag";
 import { useQuery } from "@apollo/client";
 

@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { makeStyles } from "@material-ui/core";
-import { MostViewPostTitle, MostViewPostList } from "./components";
+import { MostViewPostTitle, MostViewPostList } from "../components";
 import { gql, useQuery } from "@apollo/client";
 
 const ACTIVITY_POST = gql`
