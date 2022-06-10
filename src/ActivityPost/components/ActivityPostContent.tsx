@@ -31,6 +31,7 @@ interface ActivityPostItemProps {
     jobTypes: string[];
     recruitCloseAt: Date;
     regionDistricts: regionDistrictsType[];
+    scrapCount: number;
   };
 }
 
@@ -230,7 +231,7 @@ const ActivityPostContent: FC<ActivityPostItemProps> = ({
             </ListItem>
           </List>
         </Box>
-        <ActivityPostButton />
+        <ActivityPostButton scrapCount={activityPostItem?.scrapCount} />
       </Box>
     </Container>
   );

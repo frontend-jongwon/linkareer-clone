@@ -68,7 +68,6 @@ const useStyles = makeStyles(() => ({
     width: "fit-content",
     display: "flex",
     alignItems: "center",
-    // border: "1px solid",
   },
 
   number: {

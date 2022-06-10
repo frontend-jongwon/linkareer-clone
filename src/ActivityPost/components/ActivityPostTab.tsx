@@ -22,6 +22,7 @@ import { useQuery, gql } from "@apollo/client";
 import { format } from "date-fns";
 import { BoardSlug, ActivityTypeID } from "../../Utils/enums";
 import { getValueFromActivityType } from "../../Utils/getValueFromActivityType";
+import { Loading } from "../../Utils/utilCompenents";
 
 const ACTIVITY_POST_MATERIAL = gql`
   query CommunityPostSearch($input: CommunityPostSearchInput!) {
@@ -69,6 +70,10 @@ const ActivityPostTab: FC<ActivityPostTabProps> = ({
     },
   });
 
+  if (error) {
+    return null;
+  }
+
   const recommendPostMaterial =
     data?.communityPostSearch?.data?.postSearch?.nodes?.slice(0, 3);
 
@@ -114,6 +119,7 @@ const ActivityPostTab: FC<ActivityPostTabProps> = ({
         />
       </Tabs>
       <TabPanel value={activityTab} index={0}>
+        {loading && <Loading />}
         <Typography className={classes.title}>상세내용</Typography>
         <div
           dangerouslySetInnerHTML={createMarkup()}

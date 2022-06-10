@@ -2,7 +2,11 @@ import React, { FC } from "react";
 import { Box, Button, makeStyles, Typography } from "@material-ui/core";
 import { Bookmark } from "@material-ui/icons";
 
-const ActivityPostButton: FC = () => {
+interface ActivityPostButtonProps {
+  scrapCount: number;
+}
+
+const ActivityPostButton: FC<ActivityPostButtonProps> = ({ scrapCount }) => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -11,7 +15,7 @@ const ActivityPostButton: FC = () => {
         <Box className={classes.bookmarkIconWrapper}>
           <Bookmark className={classes.icon} />
           <Typography variant="h6" className={classes.count}>
-            8
+            {scrapCount}
           </Typography>
         </Box>
       </Button>

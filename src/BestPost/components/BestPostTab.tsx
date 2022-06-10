@@ -1,11 +1,12 @@
 import React, { useState, FC } from "react";
-import { Tab, Tabs, makeStyles, Box } from "@material-ui/core";
+import { Tab, Tabs, makeStyles } from "@material-ui/core";
 import TabPanel from "../../Utils/TabPanel";
 import BestPostList from "./BestPostList";
 import { useQuery, gql } from "@apollo/client";
 import { BestPostType } from "../../Utils/enums";
 import { PostType } from "../../Utils/types";
 import clsx from "clsx";
+import { Loading } from "../../Utils/utilCompenents";
 
 const BEST_POST_DATA = gql`
   query CommunityBestPostList($input: CommunityBestPostListInput!) {
@@ -31,6 +32,10 @@ const BestPostTab: FC = () => {
       },
     },
   });
+
+  if (error) {
+    return null;
+  }
 
   const bestPostList = data?.communityBestPostList.data.bestPosts;
   const classes = useStyles();
@@ -91,9 +96,12 @@ const BestPostTab: FC = () => {
         />
       </Tabs>
       <TabPanel value={bestPostOrder} index={bestPostOrder}>
+        {loading && <Loading />}
         {bestPostList &&
           bestPostList.map((post: PostType, index: number) => (
-            <BestPostList post={post} key={post.id} index={index} />
+            <>
+              <BestPostList post={post} key={post.id} index={index} />
+            </>
           ))}
       </TabPanel>
     </div>

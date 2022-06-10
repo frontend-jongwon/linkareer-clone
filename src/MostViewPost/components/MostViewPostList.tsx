@@ -5,6 +5,7 @@ import Image from "next/image";
 import { gql, useQuery } from "@apollo/client";
 import { differenceInCalendarDays } from "date-fns";
 import { categorieType, interestType } from "../../Utils/types";
+import { Loading } from "../../Utils/utilCompenents";
 
 interface MostViewPostListProps {
   post: {
@@ -61,10 +62,15 @@ const MostViewPostList: FC<MostViewPostListProps> = ({ post }) => {
     },
   });
 
+  if (error) {
+    return null;
+  }
+
   const famousActivityList = data?.famousActivityList;
 
   return (
     <div className={classes.root}>
+      {loading && <Loading />}
       {famousActivityList?.activities?.map((item: any) => (
         <Box className={classes.item}>
           <Box className={classes.content} key={item.id}>
