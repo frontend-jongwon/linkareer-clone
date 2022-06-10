@@ -16,7 +16,6 @@ import { format } from "date-fns";
 import {
   categoriesType,
   regionDistrictsType,
-  // region,
   thumbnailImage,
 } from "../../Utils/types";
 
