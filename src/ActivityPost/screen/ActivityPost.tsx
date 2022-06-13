@@ -63,10 +63,6 @@ const ActivityPost: FC = () => {
     variables: { activityId: "90182" },
   });
 
-  if (error) {
-    return null;
-  }
-
   const [activityTab, setActivityTab] = useState(0);
 
   const handleTabChange = (value: number) => {

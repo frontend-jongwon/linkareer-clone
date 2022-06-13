@@ -62,18 +62,14 @@ const MostViewPostList: FC<MostViewPostListProps> = ({ post }) => {
     },
   });
 
-  if (error) {
-    return null;
-  }
-
   const famousActivityList = data?.famousActivityList;
 
   return (
     <div className={classes.root}>
       {loading && <Loading />}
       {famousActivityList?.activities?.map((item: any) => (
-        <Box className={classes.item}>
-          <Box className={classes.content} key={item.id}>
+        <Box className={classes.item} key={item.id}>
+          <Box className={classes.content}>
             <Box className={classes.iconCountRight}>
               <Box className={classes.iconCountWrapper}>
                 <BookmarkOutlined className={classes.icon} />

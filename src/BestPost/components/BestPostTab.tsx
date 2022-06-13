@@ -1,4 +1,4 @@
-import React, { useState, FC } from "react";
+import React, { useState, FC, useEffect } from "react";
 import { Tab, Tabs, makeStyles } from "@material-ui/core";
 import TabPanel from "../../Utils/TabPanel";
 import BestPostList from "./BestPostList";
@@ -33,11 +33,8 @@ const BestPostTab: FC = () => {
     },
   });
 
-  if (error) {
-    return null;
-  }
-
   const bestPostList = data?.communityBestPostList.data.bestPosts;
+
   const classes = useStyles();
 
   const handleChange = (

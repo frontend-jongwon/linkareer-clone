@@ -70,10 +70,6 @@ const ActivityPostTab: FC<ActivityPostTabProps> = ({
     },
   });
 
-  if (error) {
-    return null;
-  }
-
   const recommendPostMaterial =
     data?.communityPostSearch?.data?.postSearch?.nodes?.slice(0, 3);
 
