@@ -43,3 +43,10 @@ export type interestType = {
   id: string;
   naem: string;
 };
+
+export type commentListType = {
+  id: number;
+  nickname: string;
+  date: string;
+  comment: string;
+};

@@ -2,7 +2,6 @@ import React, { FC } from "react";
 import {
   Tabs,
   Tab,
-  makeStyles,
   Box,
   Typography,
   List,
@@ -10,6 +9,7 @@ import {
   Divider,
   CircularProgress,
 } from "@material-ui/core";
+import { makeStyles } from "@material-ui/styles";
 import TabPanel from "../../Utils/TabPanel";
 import clsx from "clsx";
 import {
@@ -24,6 +24,7 @@ import { format } from "date-fns";
 import { BoardSlug, ActivityTypeID } from "../../Utils/enums";
 import { getValueFromActivityType } from "../../Utils/getValueFromActivityType";
 import { Loading } from "../../Utils/utilCompenents";
+import { TextArea } from "../../Utils/utilCompenents/TextArea";
 
 const ACTIVITY_POST_MATERIAL = gql`
   query CommunityPostSearch($input: CommunityPostSearchInput!) {
@@ -189,7 +190,7 @@ const ActivityPostTab: FC<ActivityPostTabProps> = ({
         </div>
       </TabPanel>
       <TabPanel value={activityTab} index={2}>
-        {""}
+        <TextArea />
       </TabPanel>
     </div>
   );
