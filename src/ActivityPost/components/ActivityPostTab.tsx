@@ -17,6 +17,7 @@ import {
   MessageOutlined,
   RemoveRedEyeOutlined,
   ChatBubbleOutlineOutlined,
+  RadioButtonUnchecked,
 } from "@material-ui/icons";
 import { useQuery, gql } from "@apollo/client";
 import { format } from "date-fns";
@@ -168,6 +169,18 @@ const ActivityPostTab: FC<ActivityPostTabProps> = ({
           ))}
           <Divider />
           <Divider className={classes.divider} />
+          <Box className={classes.content}>
+            <Box className={classes.wrapper}>
+              <RadioButtonUnchecked className={classes.icon} />
+              <Typography className={classes.cotentTitle}>
+                인기 활동 리스트
+              </Typography>
+            </Box>
+            <Box className={classes.wrapper}>
+              <Typography className={classes.more}>더보기 </Typography>
+              <ArrowForwardIosOutlined className={classes.arrow} />
+            </Box>
+          </Box>
         </div>
       </TabPanel>
       <TabPanel value={activityTab} index={2}>
@@ -302,6 +315,6 @@ const useStyles = makeStyles(() => ({
   },
 
   divider: {
-    marginTop: 20,
+    margin: "20px 0 20px 0",
   },
 }));
