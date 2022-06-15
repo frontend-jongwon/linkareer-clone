@@ -106,7 +106,12 @@ const ActivityPostTab: FC<ActivityPostTabProps> = ({
           className={clsx(classes.tab, {
             [classes.selected]: activityTab === 1,
           })}
-          label="합격자료"
+          label={
+            <div>
+              <span>합격자료</span>
+              <span className={classes.label}>HOT</span>
+            </div>
+          }
         />
         <Tab
           className={clsx(classes.tab, {
@@ -316,5 +321,14 @@ const useStyles = makeStyles(() => ({
 
   divider: {
     margin: "20px 0 20px 0",
+  },
+
+  label: {
+    background: "#01a0ff",
+    color: "#ffffff",
+    marginLeft: 4,
+    fontSize: 10,
+    padding: 4,
+    borderRadius: 5,
   },
 }));
