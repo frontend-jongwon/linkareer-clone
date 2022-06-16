@@ -3,11 +3,81 @@ import { TextareaAutosize, Button, Box, makeStyles } from "@material-ui/core";
 import { format } from "date-fns";
 import TextAreaComment from "./TextAreaComment";
 import { commentListType } from "../../types";
+import { gql, useQuery, useMutation } from "@apollo/client";
+
+const GET_COMMENT_LIST = gql`
+  query Query($filterBy: ReplyFilters, $pagination: Pagination) {
+    replies(filterBy: $filterBy, pagination: $pagination) {
+      nodes {
+        id
+        content
+        createdAt
+        name
+        parent {
+          id
+        }
+        replies {
+          id
+          content
+          createdAt
+          name
+          parent {
+            id
+          }
+        }
+      }
+      totalCount
+    }
+  }
+`;
+
+const ADD_COMMENT = gql`
+  mutation Mutation($input: ReplyCreateInput!) {
+    replyCreate(input: $input) {
+      reply {
+        id
+        content
+        createdAt
+        name
+        parent {
+          id
+        }
+        replies {
+          id
+          content
+          createdAt
+          name
+          parent {
+            id
+          }
+        }
+      }
+    }
+  }
+`;
 
 const TextArea: FC = () => {
   const classes = useStyles();
 
-  const [commemtList, setCommentList] = useState<commentListType[]>([]);
+  const { data, loading, error } = useQuery(GET_COMMENT_LIST, {
+    variables: {
+      filterBy: {
+        pageID: "90182",
+        pageType: 1,
+      },
+      pagination: {
+        page: 1,
+        pageSize: 100,
+      },
+    },
+  });
+
+  const [replyCreate, {}] = useMutation(ADD_COMMENT, {
+    refetchQueries: [{ query: GET_COMMENT_LIST }, "Query"],
+  });
+  console.log(data?.replies.nodes);
+
+  // const [commemtList, setCommentList] = useState([]);
   const [comment, setComment] = useState("");
 
   const handleCommentChange = (e: any) => {
@@ -15,22 +85,34 @@ const TextArea: FC = () => {
   };
 
   const handleAddCommentButton = () => {
-    setCommentList([
-      ...commemtList,
-      {
-        id: commemtList.length + 1,
-        nickname: "환상적인 양",
-        date: format(new Date(), "yyyy.MM.dd"),
-        comment: comment,
+    // setCommentList([
+    //   ...commemtList,
+    //   {
+    //     id: commemtList.length + 1,
+    //     nickname: "환상적인 양",
+    //     date: format(new Date(), "yyyy.MM.dd"),
+    //     comment: comment,
+    //   },
+    // ]);
+    replyCreate({
+      variables: {
+        input: {
+          pageType: 1,
+          pageID: 90182,
+          replyID: null,
+          content: comment,
+        },
       },
-    ]);
+    });
     setComment("");
   };
+
+  const commentList = data?.replies.nodes;
 
   return (
     <div className={classes.root}>
       <div className={classes.commetField}>
-        {commemtList?.map((comment: commentListType) => (
+        {commentList?.map((comment: any) => (
           <TextAreaComment comment={comment} />
         ))}
       </div>

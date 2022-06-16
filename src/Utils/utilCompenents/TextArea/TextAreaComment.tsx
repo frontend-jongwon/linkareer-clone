@@ -1,12 +1,15 @@
 import React, { FC } from "react";
 import { makeStyles } from "@material-ui/core";
+import { format } from "date-fns";
+import face from "../../../../images/face.png";
+import Image from "next/image";
 
 interface TextAreaCommentType {
   comment: {
     id: number;
-    nickname: string;
-    date: string;
-    comment: string;
+    name: string;
+    createdAt: Date;
+    content: string;
   };
 }
 
@@ -14,11 +17,15 @@ const TextAreaComment: FC<TextAreaCommentType> = ({ comment }) => {
   const classes = useStyles();
   return (
     <div className={classes.commentItem} key={comment.id}>
-      <div className={classes.img}>이미지</div>
+      <div className={classes.img}>
+        <Image src={face} width={63} height={77} />
+      </div>
       <ul className={classes.desc}>
-        <li className={classes.nickname}>{comment.nickname}</li>
-        <li className={classes.date}>{comment.date}</li>
-        <li className={classes.context}>{comment.comment}</li>
+        <li className={classes.nickname}>{comment.name}</li>
+        <li className={classes.date}>
+          {format(new Date(comment.createdAt), "yyyy.MM.dd")}
+        </li>
+        <li className={classes.context}>{comment.content}</li>
       </ul>
     </div>
   );
@@ -33,12 +40,16 @@ const useStyles = makeStyles(() => ({
     padding: 0,
     justifyContent: "center",
     alignItems: "center",
+    marginBottom: 5,
   },
   img: {
-    width: 46,
-    height: 46,
+    width: 50,
+    height: 50,
+    marginRight: 15,
+    borderRadius: "50%",
     border: "1px solid #dddddd",
-    marginRight: 20,
+    overflow: "hidden",
+    marginBottom: 40,
   },
 
   nickname: {
