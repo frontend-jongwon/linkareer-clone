@@ -1,6 +1,5 @@
 import React, { FC, useState } from "react";
 import { TextareaAutosize, Button, Box, makeStyles } from "@material-ui/core";
-import { format } from "date-fns";
 import TextAreaComment from "./TextAreaComment";
 import { gql, useQuery, useMutation, MutationUpdaterFn } from "@apollo/client";
 

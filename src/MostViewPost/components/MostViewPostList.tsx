@@ -23,19 +23,20 @@ const MOST_VIEW_POST = gql`
         id
         title
         type
+        logoImage {
+          id
+        }
+        viewCount
+        replyCount
+        scrapCount
+
         thumbnailImage {
           id
           url
         }
-        logoImage {
-          id
-        }
-        scrapCount
         organizationName
         recruitType
         recruitCloseAt
-        viewCount
-        replyCount
       }
     }
   }

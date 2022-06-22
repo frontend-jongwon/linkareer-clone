@@ -8,8 +8,10 @@ import {
 import gql from "graphql-tag";
 import { useQuery } from "@apollo/client";
 import { Loading } from "../../Utils/utilCompenents";
+import { ActivityPost_item_Fragment } from "../../graphql/graphql";
 
 const ACTIVITY_POST = gql`
+  ${ActivityPost_item_Fragment}
   query Activity($activityId: ID!) {
     activity(id: $activityId) {
       ...ActivityPost_item
@@ -27,32 +29,6 @@ const ACTIVITY_POST = gql`
       replyCount
       scrapCount
     }
-  }
-
-  fragment ActivityPost_item on Activity {
-    thumbnailImage {
-      id
-      url
-    }
-    activityTypeID
-    organizationName
-    organizationType
-    createdAt
-    homepageURL
-    regionDistricts {
-      id
-      name
-      region {
-        id
-        name
-      }
-    }
-    categories {
-      id
-      name
-    }
-    jobTypes
-    recruitCloseAt
   }
 `;
 
