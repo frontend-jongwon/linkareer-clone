@@ -4,6 +4,15 @@ const nextConfig = {
   images: {
     domains: ["api.linkareer.com"],
   },
+  async redirects() {
+    return [
+      {
+        source: "/",
+        destination: "/activity",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;
