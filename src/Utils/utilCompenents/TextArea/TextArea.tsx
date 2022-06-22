@@ -2,10 +2,9 @@ import React, { FC, useState } from "react";
 import { TextareaAutosize, Button, Box, makeStyles } from "@material-ui/core";
 import { format } from "date-fns";
 import TextAreaComment from "./TextAreaComment";
-import { commentListType } from "../../types";
-import { gql, useQuery, useMutation } from "@apollo/client";
+import { gql, useQuery, useMutation, MutationUpdaterFn } from "@apollo/client";
 
-const GET_COMMENT_LIST = gql`
+export const GET_COMMENT_LIST = gql`
   query Query($filterBy: ReplyFilters, $pagination: Pagination) {
     replies(filterBy: $filterBy, pagination: $pagination) {
       nodes {
@@ -31,7 +30,7 @@ const GET_COMMENT_LIST = gql`
   }
 `;
 
-const ADD_COMMENT = gql`
+const CHANGE_COMMENT = gql`
   mutation Mutation($input: ReplyCreateInput!) {
     replyCreate(input: $input) {
       reply {
@@ -56,6 +55,29 @@ const ADD_COMMENT = gql`
   }
 `;
 
+const commentUpdater =
+  (commentVariables: any, pageID: string): MutationUpdaterFn =>
+  (cache, { data }) => {
+    const cashedCommentList: any = cache.readQuery({
+      query: GET_COMMENT_LIST,
+      variables: commentVariables,
+    });
+
+    cache.writeQuery({
+      query: GET_COMMENT_LIST,
+      variables: commentVariables,
+      data: {
+        replies: {
+          nodes: [
+            ...cashedCommentList?.replies?.nodes,
+            data?.replyCreate?.reply,
+          ],
+          totalCount: cashedCommentList?.replies?.totalCount + 1,
+          __typename: "ReplyListPayload",
+        },
+      },
+    });
+  };
 const TextArea: FC = () => {
   const classes = useStyles();
 
@@ -72,12 +94,22 @@ const TextArea: FC = () => {
     },
   });
 
-  const [replyCreate, {}] = useMutation(ADD_COMMENT, {
-    refetchQueries: [{ query: GET_COMMENT_LIST }, "Query"],
+  const [replyCreate, {}] = useMutation(CHANGE_COMMENT, {
+    update: commentUpdater(
+      {
+        filterBy: {
+          pageID: "90182",
+          pageType: 1,
+        },
+        pagination: {
+          page: 1,
+          pageSize: 100,
+        },
+      },
+      "90182"
+    ),
   });
-  console.log(data?.replies.nodes);
 
-  // const [commemtList, setCommentList] = useState([]);
   const [comment, setComment] = useState("");
 
   const handleCommentChange = (e: any) => {
@@ -85,25 +117,18 @@ const TextArea: FC = () => {
   };
 
   const handleAddCommentButton = () => {
-    // setCommentList([
-    //   ...commemtList,
-    //   {
-    //     id: commemtList.length + 1,
-    //     nickname: "환상적인 양",
-    //     date: format(new Date(), "yyyy.MM.dd"),
-    //     comment: comment,
-    //   },
-    // ]);
-    replyCreate({
-      variables: {
-        input: {
-          pageType: 1,
-          pageID: 90182,
-          replyID: null,
-          content: comment,
+    if (comment.length > 0) {
+      replyCreate({
+        variables: {
+          input: {
+            pageType: 1,
+            pageID: 90182,
+            replyID: null,
+            content: comment,
+          },
         },
-      },
-    });
+      });
+    }
     setComment("");
   };
 
