@@ -1,6 +1,6 @@
 import React, { useState, FC, useEffect } from "react";
 import { Tab, Tabs, makeStyles } from "@material-ui/core";
-import TabPanel from "../../Utils/TabPanel";
+import TabPanel from "../../Utils/utilCompenents/TabPanel";
 import BestPostList from "./BestPostList";
 import { useQuery, gql } from "@apollo/client";
 import { BestPostType } from "../../Utils/enums";

@@ -10,7 +10,7 @@ import {
   CircularProgress,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
-import TabPanel from "../../Utils/TabPanel";
+import TabPanel from "../../Utils/utilCompenents/TabPanel";
 import clsx from "clsx";
 import {
   ArrowForwardIosOutlined,
