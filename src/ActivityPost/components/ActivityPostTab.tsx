@@ -145,33 +145,29 @@ const ActivityPostTab: FC<ActivityPostTabProps> = ({
           </Box>
 
           {recommendPostMaterial?.map((post: any) => (
-            <>
-              <Box className={classes.contentWrapper}>
-                <Typography className={classes.headTitle}>
-                  {post?.source?.title}
-                </Typography>
-                <Box className={classes.contentInfo}>
-                  {post?.source?.excerpt}
-                </Box>
-                <List className={classes.list}>
-                  <ListItem className={classes.listItem}>
-                    {format(post?.source?.createdAt, "yyyy.MM.dd")}
-                  </ListItem>
-                  <ListItem className={classes.listItem}>
-                    <RemoveRedEyeOutlined className={classes.detail} />
-                    <Typography className={classes.detail}>
-                      {post?.source?.views}
-                    </Typography>
-                  </ListItem>
-                  <ListItem className={classes.listItem}>
-                    <ChatBubbleOutlineOutlined className={classes.detail} />
-                    <Typography className={classes.detail}>
-                      {post?.source?.commentCount}
-                    </Typography>
-                  </ListItem>
-                </List>
-              </Box>
-            </>
+            <Box className={classes.contentWrapper}>
+              <Typography className={classes.headTitle}>
+                {post?.source?.title}
+              </Typography>
+              <Box className={classes.contentInfo}>{post?.source?.excerpt}</Box>
+              <List className={classes.list}>
+                <ListItem className={classes.listItem}>
+                  {format(post?.source?.createdAt, "yyyy.MM.dd")}
+                </ListItem>
+                <ListItem className={classes.listItem}>
+                  <RemoveRedEyeOutlined className={classes.detail} />
+                  <Typography className={classes.detail}>
+                    {post?.source?.views}
+                  </Typography>
+                </ListItem>
+                <ListItem className={classes.listItem}>
+                  <ChatBubbleOutlineOutlined className={classes.detail} />
+                  <Typography className={classes.detail}>
+                    {post?.source?.commentCount}
+                  </Typography>
+                </ListItem>
+              </List>
+            </Box>
           ))}
           <Divider />
           <Divider className={classes.divider} />

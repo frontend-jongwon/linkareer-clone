@@ -96,9 +96,9 @@ const BestPostTab: FC = () => {
         {loading && <Loading />}
         {bestPostList &&
           bestPostList.map((post: PostType, index: number) => (
-            <>
-              <BestPostList post={post} key={post.id} index={index} />
-            </>
+            <div key={post.id}>
+              <BestPostList post={post} index={index} />
+            </div>
           ))}
       </TabPanel>
     </div>
