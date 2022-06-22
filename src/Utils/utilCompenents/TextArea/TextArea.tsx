@@ -2,6 +2,7 @@ import React, { FC, useState } from "react";
 import { TextareaAutosize, Button, Box, makeStyles } from "@material-ui/core";
 import TextAreaComment from "./TextAreaComment";
 import { gql, useQuery, useMutation, MutationUpdaterFn } from "@apollo/client";
+import { commentVariablesType, commentType } from "./../../types";
 
 export const GET_COMMENT_LIST = gql`
   query Query($filterBy: ReplyFilters, $pagination: Pagination) {
@@ -55,7 +56,7 @@ const CHANGE_COMMENT = gql`
 `;
 
 const commentUpdater =
-  (commentVariables: any, pageID: string): MutationUpdaterFn =>
+  (commentVariables: commentVariablesType): MutationUpdaterFn =>
   (cache, { data }) => {
     const cashedCommentList: any = cache.readQuery({
       query: GET_COMMENT_LIST,
@@ -94,19 +95,16 @@ const TextArea: FC = () => {
   });
 
   const [replyCreate, {}] = useMutation(CHANGE_COMMENT, {
-    update: commentUpdater(
-      {
-        filterBy: {
-          pageID: "90182",
-          pageType: 1,
-        },
-        pagination: {
-          page: 1,
-          pageSize: 100,
-        },
+    update: commentUpdater({
+      filterBy: {
+        pageID: "90182",
+        pageType: 1,
       },
-      "90182"
-    ),
+      pagination: {
+        page: 1,
+        pageSize: 100,
+      },
+    }),
   });
 
   const [comment, setComment] = useState("");
@@ -136,7 +134,7 @@ const TextArea: FC = () => {
   return (
     <div className={classes.root}>
       <div className={classes.commetField}>
-        {commentList?.map((comment: any) => (
+        {commentList?.map((comment: commentType) => (
           <TextAreaComment comment={comment} />
         ))}
       </div>

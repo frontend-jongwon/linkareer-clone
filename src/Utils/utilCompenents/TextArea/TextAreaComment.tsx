@@ -7,7 +7,7 @@ import { gql, useMutation } from "@apollo/client";
 
 interface TextAreaCommentType {
   comment: {
-    id: number;
+    id: string;
     name: string;
     createdAt: Date;
     content: string;

@@ -41,12 +41,27 @@ export type categorieType = {
 
 export type interestType = {
   id: string;
-  naem: string;
+  name: string;
 };
 
-export type commentListType = {
-  id: number;
-  nickname: string;
-  date: string;
-  comment: string;
+export type commentVariablesType = {
+  filterBy: filterByType;
+  pagination: pagination;
+};
+
+export type filterByType = {
+  pageID: string;
+  pageType: number;
+};
+
+export type pagination = {
+  page: number;
+  pageSize: number;
+};
+
+export type commentType = {
+  id: string;
+  name: string;
+  createdAt: Date;
+  content: string;
 };
