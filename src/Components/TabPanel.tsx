@@ -1,13 +1,5 @@
 import React, { FC } from "react";
-import {
-  AppBar,
-  Tabs,
-  Tab,
-  Typography,
-  Container,
-  Box,
-  makeStyles,
-} from "@material-ui/core";
+import { Typography, Box, makeStyles } from "@material-ui/core";
 
 interface TabPanelProps {
   children: React.ReactNode;

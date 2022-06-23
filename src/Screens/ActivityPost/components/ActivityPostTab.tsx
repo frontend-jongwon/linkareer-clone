@@ -7,10 +7,9 @@ import {
   List,
   ListItem,
   Divider,
-  CircularProgress,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
-import TabPanel from "../../Utils/utilCompenents/TabPanel";
+import TabPanel from "../../../Components/TabPanel";
 import clsx from "clsx";
 import {
   ArrowForwardIosOutlined,
@@ -21,10 +20,10 @@ import {
 } from "@material-ui/icons";
 import { useQuery, gql } from "@apollo/client";
 import { format } from "date-fns";
-import { BoardSlug, ActivityTypeID } from "../../Utils/enums";
-import { getValueFromActivityType } from "../../Utils/getValueFromActivityType";
-import { Loading } from "../../Utils/utilCompenents";
-import { TextArea } from "../../Utils/utilCompenents/TextArea";
+import { BoardSlug, ActivityTypeID } from "../../../Utils/enums";
+import { getValueFromActivityType } from "../../../Utils/getValueFromActivityType";
+import { Loading } from "../../../Components";
+import { TextArea } from "../../../Components/TextArea";
 
 const ACTIVITY_POST_MATERIAL = gql`
   query CommunityPostSearch($input: CommunityPostSearchInput!) {

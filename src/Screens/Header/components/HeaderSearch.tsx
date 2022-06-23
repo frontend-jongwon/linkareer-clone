@@ -5,7 +5,7 @@ import {
   IconButton,
   InputAdornment,
 } from "@material-ui/core";
-import glass from "../../../images/glass.png";
+import glass from "../../../../images/glass.png";
 import Image from "next/image";
 
 const HeaderSearch: FC = () => {

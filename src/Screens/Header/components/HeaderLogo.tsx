@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import Image from "next/image";
-import logo from "../../../images/logo.png";
+import logo from "../../../../images/logo.png";
 import { makeStyles } from "@material-ui/core";
 
 const HeaderLogo: FC = () => {

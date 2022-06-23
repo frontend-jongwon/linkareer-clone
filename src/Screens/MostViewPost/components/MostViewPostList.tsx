@@ -4,8 +4,8 @@ import { BookmarkOutlined } from "@material-ui/icons";
 import Image from "next/image";
 import { gql, useQuery } from "@apollo/client";
 import { differenceInCalendarDays } from "date-fns";
-import { categorieType, interestType } from "../../Utils/types";
-import { Loading } from "../../Utils/utilCompenents";
+import { categorieType, interestType } from "../../../Utils/types";
+import { Loading } from "../../../Components";
 
 interface MostViewPostListProps {
   post: {

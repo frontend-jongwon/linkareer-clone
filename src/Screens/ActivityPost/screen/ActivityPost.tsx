@@ -7,8 +7,8 @@ import {
 } from "../components";
 import gql from "graphql-tag";
 import { useQuery } from "@apollo/client";
-import { Loading } from "../../Utils/utilCompenents";
-import { ActivityPost_item_Fragment } from "../../../graphql/graphql";
+import { Loading } from "../../../Components";
+import { ActivityPost_item_Fragment } from "../../../../graphql/graphql";
 
 const ACTIVITY_POST = gql`
   ${ActivityPost_item_Fragment}

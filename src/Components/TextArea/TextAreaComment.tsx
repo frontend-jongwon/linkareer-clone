@@ -1,9 +1,8 @@
 import React, { FC } from "react";
 import { makeStyles } from "@material-ui/core";
 import { format } from "date-fns";
-import face from "../../../../images/face.png";
+import face from "../../../images/face.png";
 import Image from "next/image";
-import { gql, useMutation } from "@apollo/client";
 
 interface TextAreaCommentType {
   comment: {

@@ -17,7 +17,7 @@ import {
   categoriesType,
   regionDistrictsType,
   thumbnailImage,
-} from "../../Utils/types";
+} from "../../../Utils/types";
 
 interface ActivityPostItemProps {
   activityPostItem: {

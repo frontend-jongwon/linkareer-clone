@@ -1,11 +1,11 @@
 import React, { FC } from "react";
 import Box from "@mui/material/Box";
-import Header from "../src/Header/screen/Header";
+import Header from "../src/Screens/Header/screen/Header";
 import { makeStyles } from "@material-ui/core";
-import { ActivityPost } from "../src/ActivityPost/screen";
-import { BestPost } from "../src/BestPost/screen";
-import { MostViewPost } from "../src/MostViewPost/screen";
-import { Footer } from "../src/Footer/screen";
+import { ActivityPost } from "../src/Screens/ActivityPost/screen";
+import { BestPost } from "../src/Screens/BestPost/screen";
+import { MostViewPost } from "../src/Screens/MostViewPost/screen";
+import { Footer } from "../src/Screens/Footer/screen";
 
 const Activity: FC = () => {
   const classes = useStyles();

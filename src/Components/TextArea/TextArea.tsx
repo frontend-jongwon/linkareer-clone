@@ -1,8 +1,8 @@
 import React, { FC, useState } from "react";
-import { TextareaAutosize, Button, Box, makeStyles } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 import TextAreaComment from "./TextAreaComment";
 import { gql, useQuery, useMutation, MutationUpdaterFn } from "@apollo/client";
-import { commentVariablesType, commentType } from "./../../types";
+import { commentVariablesType, commentType } from "../../Utils/types";
 
 export const GET_COMMENT_LIST = gql`
   query Query($filterBy: ReplyFilters, $pagination: Pagination) {

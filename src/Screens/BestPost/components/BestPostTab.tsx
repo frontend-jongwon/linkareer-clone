@@ -1,12 +1,12 @@
 import React, { useState, FC, useEffect } from "react";
 import { Tab, Tabs, makeStyles } from "@material-ui/core";
-import TabPanel from "../../Utils/utilCompenents/TabPanel";
+import TabPanel from "../../../Components/TabPanel";
 import BestPostList from "./BestPostList";
 import { useQuery, gql } from "@apollo/client";
-import { BestPostType } from "../../Utils/enums";
-import { PostType } from "../../Utils/types";
+import { BestPostType } from "../../../Utils/enums";
+import { PostType } from "../../../Utils/types";
 import clsx from "clsx";
-import { Loading } from "../../Utils/utilCompenents";
+import { Loading } from "../../../Components";
 
 const BEST_POST_DATA = gql`
   query CommunityBestPostList($input: CommunityBestPostListInput!) {
