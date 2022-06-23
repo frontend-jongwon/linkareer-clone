@@ -135,7 +135,7 @@ const TextArea: FC = () => {
     <div className={classes.root}>
       <div className={classes.commetField}>
         {commentList?.map((comment: commentType) => (
-          <TextAreaComment comment={comment} />
+          <TextAreaComment comment={comment} key={comment.id} />
         ))}
       </div>
       <div className={classes.commentWrapper}>

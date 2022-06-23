@@ -145,7 +145,7 @@ const ActivityPostTab: FC<ActivityPostTabProps> = ({
           </Box>
 
           {recommendPostMaterial?.map((post: any) => (
-            <Box className={classes.contentWrapper}>
+            <Box className={classes.contentWrapper} key={post.source.id}>
               <Typography className={classes.headTitle}>
                 {post?.source?.title}
               </Typography>
