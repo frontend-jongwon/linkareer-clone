@@ -20,13 +20,13 @@ const TextAreaComment: FC<TextAreaCommentType> = ({ comment }) => {
       <div className={classes.img}>
         <Image src={face} width={63} height={77} />
       </div>
-      <ul className={classes.desc}>
-        <li className={classes.nickname}>{comment.name}</li>
-        <li className={classes.date}>
+      <div className={classes.desc}>
+        <span className={classes.nickname}>{comment.name}</span>
+        <span className={classes.date}>
           {format(new Date(comment.createdAt), "yyyy.MM.dd")}
-        </li>
-        <li className={classes.context}>{comment.content}</li>
-      </ul>
+        </span>
+        <span className={classes.context}>{comment.content}</span>
+      </div>
     </div>
   );
 };
@@ -40,7 +40,7 @@ const useStyles = makeStyles(() => ({
     padding: 0,
     justifyContent: "center",
     alignItems: "center",
-    marginBottom: 5,
+    marginBottom: 20,
   },
   img: {
     width: 50,
@@ -84,5 +84,7 @@ const useStyles = makeStyles(() => ({
   desc: {
     width: "fit-content",
     padding: 0,
+    display: "flex",
+    flexDirection: "column",
   },
 }));
